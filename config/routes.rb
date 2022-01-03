@@ -5,5 +5,7 @@ Rails.application.routes.draw do
 
   get 'about', to: 'static#about'
   get 'contact', to: 'static#contact'
+  get 'signup', to: 'static#signup'
+  get 'login', to: 'static#login'
 
 end
