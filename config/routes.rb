@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-
-  
   root 'static#home'
 
   get 'about', to: 'static#about'
@@ -22,6 +20,7 @@ Rails.application.routes.draw do
 
   resources :users#, only: [:show, :new, :edit, :create, :update, :destroy]
   # resources :clients
+  resources :stylists #,only: [:new, :create]
 
 end
 
