@@ -38,9 +38,10 @@
   </head>
 
   <body>
-    <% flash.each do |type, msg| %>
+    <% flash.each do |type, message| %>
       <div class="alert alert-info">
-        <%= msg %>
+        <%# <%= message %> %>
+        <%= content_tag(:div, message, class: "alert alert-#{type}") %>
       </div>
     <% end %>
 

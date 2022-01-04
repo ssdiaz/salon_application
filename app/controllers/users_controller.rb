@@ -14,8 +14,8 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.save
             log_in @user #session[:user_id] = user.id
-            flash[:success] = "Welcome to the Sample App!"
-            redirect_to @user
+            flash[:success] = "Welcome to the Salon App!"
+            redirect_to @user #user_url(@user) or users#show -- profile page -- think I want this to be appointment in future
           else
             render 'new'
           end
