@@ -5,14 +5,24 @@ class SessionsController < ApplicationController
 
     def create
         puts params
-        puts "HA HA HA HA HA HA"
-        user = User.find_by(email: params[:email])
-        # return head(:forbidden) unless @user.authenticate(params[:password])
-        user = user.try(:authenticate, params[:password])
-        return redirect_to(controller: 'sessions', action: 'new') unless user
-        session[:user_id] = user.id
-        @user = user
-        redirect_to controller: 'static', action: 'about' #appointments -- need to change this
+        puts " - - - - - - -- - - - - - - - "
+
+        user = User.find_by(email: params[:session][:email].downcase)
+                        # return head(:forbidden) unless @user.authenticate(params[:password])
+        # user = user.try(:authenticate, params[:session][:password])
+        # return redirect_to(controller: 'sessions', action: 'new') unless user
+        # session[:user_id] = user.id
+        # @user = user
+        # redirect_to controller: 'static', action: 'about' #appointments -- need to change this
+
+        if user && user.authenticate(params[:session][:password])
+            session[:user_id] = user.id #log_in user -- if you use the method in application_controller
+            redirect_to user #user_url(user)
+        else
+        # Create an error message.
+            flash.now[:danger] = 'Invalid email/password combination' # Not quite right!
+            render 'new'
+        end
 
 
         # Parameters: {"authenticity_token"=>"[FILTERED]", "session"=>{"email"=>"sam@email.com", "password"=>"[FILTERED]"}, "commit"=>"Login"}
@@ -20,12 +30,8 @@ class SessionsController < ApplicationController
     end
 
     def destroy
-        if logged_in?
-            session.delete :user_id
-            redirect_to '/about'
-        else
-            redirect_to '/contact'
-        end
+        session.delete :user_id
+        redirect_to '/about' #'/'
     end
 
 end

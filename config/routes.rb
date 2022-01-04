@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  resources :users
-  resources :clients
+
 
   
   root 'static#home'
@@ -8,12 +7,21 @@ Rails.application.routes.draw do
   get 'about', to: 'static#about'
   get 'contact', to: 'static#contact'
 
-  get 'signup', to: 'users#new'#signup
+  # get 'signup', to: 'users#new'#signup
 
-  get '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create'
-  get '/logout', to: 'sessions#destroy'
-  delete '/logout', to: 'sessions#destroy'
+  # get 'login', to: 'sessions#new'
+  # post 'login', to: 'sessions#create'
+  # get 'logout', to: 'sessions#destroy'
+  # delete 'logout', to: 'sessions#destroy'
+
+  get    'signup'  => 'users#new'
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
+  # post '/logout' => 'sessions#destroy'
+
+  resources :users
+  # resources :clients
 
 end
 

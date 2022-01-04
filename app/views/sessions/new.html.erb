@@ -1,17 +1,31 @@
-<h3>Login Here:</h3>
 
+<% flash.each do |type, msg| %>
+  <div class="alert alert-info">
+    <%= msg %>
+  </div>
+<% end %>
+<br>
+
+<h3>Login Here:</h3>
 <br><br>
 
-<%= form_for :session, url: login_path do |f| %>
-    <%= f.label :email%>
-    <%= f.text_field :email %>
+<%= form_for(:session, url: login_path) do |f| %>
+    <%= f.label :email %>
+    <%= f.text_field :email, class: 'form-control' %>
 
-    <%= f.label :password%>
-    <%= f.password_field :password %>
-    <%= f.submit "Login" %>
+    <%= f.label :password %>
+    <%= f.password_field :password, class: 'form-control' %>
+    <%= f.submit "Log in", class: "btn btn-primary" %>
 <% end %>
-
 
 <p>New user? <%= link_to "Sign up now!", signup_path %></p>
 
 <p><%= link_to 'Return to Home', '/' %>
+
+<%#  submitting this form will result in a params hash where params[:session][:email] and 
+<%# params[:session][:password] correspond to the email and password fields. %> 
+
+<%# params[:session] = { password: "foobar", email: "user@example.com" } %>
+<%# submitted email & pw: %>
+    <%# params[:session][:email] %>
+    <%# params[:session][:password %>
