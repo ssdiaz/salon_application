@@ -1,10 +1,10 @@
 module SessionsHelper
+  # Resource: https://3rd-edition.railstutorial.org/book/log_in_log_out#sec-sessions_and_failed_login
 
   # Logs in the given user.
-  def log_in(user)
-    session[:user_id] = user.id
-  end
-
+  # def log_in(user)
+  #   session[:user_id] = user.id
+  # end
 
   # Returns the current logged-in user (if any).
   def current_user
@@ -21,7 +21,7 @@ module SessionsHelper
   end
 
   def require_logged_in
-    return redirect_to(controller: 'sessions', action: 'new') unless logged_in?
-    end
+    return redirect_to(controller: 'sessions', action: 'new') unless logged_in? #sessions#new is our login form - logging in creates a new session
+  end
 
 end

@@ -30,8 +30,9 @@ class SessionsController < ApplicationController
     end
 
     def destroy
-        session.delete :user_id
-        redirect_to '/about' #'/'
+        session.delete(:user_id)
+        @current_user = nil #set the current user to nil, although this won’t matter because of an immediate redirect to the root URL. 
+        redirect_to '/'
     end
 
 end
