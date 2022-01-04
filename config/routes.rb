@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'about', to: 'static#about'
   get 'contact', to: 'static#contact'
 
-  get 'signup', to: 'users#signup'#clients???????????
+  get 'signup', to: 'users#new'#signup
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
