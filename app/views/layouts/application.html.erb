@@ -19,7 +19,6 @@
       <li><%= link_to 'Contact Us', '/contact' %></li>
 
       <% if logged_in? %>
-        <li><%= link_to "Users", '#' %></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             Account <b class="caret"></b>
@@ -28,9 +27,7 @@
             <li><%= link_to "Profile", current_user %></li>
             <li><%= link_to "Settings", '#' %></li>
             <li class="divider"></li>
-            <li>
-              <%= link_to "Log out", logout_path %>
-            </li>
+            <li><%= link_to "Log out", logout_path %></li>
           </ul>
         </li>
       <% else %>
@@ -41,9 +38,10 @@
   </head>
 
   <body>
-    <% flash.each do |type, msg| %>
+    <% flash.each do |type, message| %>
       <div class="alert alert-info">
-        <%= msg %>
+        <%# <%= message %> 
+        <%= content_tag(:div, message, class: "alert alert-#{type}") %>
       </div>
     <% end %>
 
