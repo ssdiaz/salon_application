@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-
-
   
   root 'static#home'
 
@@ -17,11 +15,11 @@ Rails.application.routes.draw do
   get    'signup'  => 'users#new'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
-  get 'logout'  => 'sessions#destroy' #delete, and post do not work here ... 
+  get    'logout'  => 'sessions#destroy' #delete, and post do not work here ... 
   # post '/logout' => 'sessions#destroy'
 
-  resources :users#, only: [:show, :new, :edit, :create, :update, :destroy]
-  # resources :clients
+  resources :users
+  resources :stylists
 
 end
 

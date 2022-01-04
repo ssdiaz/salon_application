@@ -1,0 +1,12 @@
+Stylists count = <%= @stylists.count %><br>
+
+<br>
+All Stylists:
+<ul>
+    <% @stylists.each do |stylist| %>
+        <li><%= stylist.name %></li>
+    <% end %>
+</ul>
+
+
+Users count = <%= @users.count %>

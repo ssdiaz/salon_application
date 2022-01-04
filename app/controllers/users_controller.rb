@@ -16,9 +16,15 @@ class UsersController < ApplicationController
             log_in @user #session[:user_id] = user.id
             flash[:success] = "Welcome to the Salon App!"
             redirect_to @user #user_url(@user) or users#show -- profile page -- think I want this to be appointment in future
-          else
+        else
             render 'new'
-          end
+        end
+
+
+
+
+
+        
     end
 
     def show
@@ -28,6 +34,6 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:name, :email, :password, :password_confirmation)
+        params.require(:user).permit(:name, :email, :password, :password_confirmation, :client)
     end
 end
