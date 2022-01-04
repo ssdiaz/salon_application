@@ -7,5 +7,5 @@ class User < ApplicationRecord
     # validates :email, uniqueness: true
 
     has_secure_password
-    validates :password, presence: true, length: { minimum: 3 }
+    validates :password, presence: true, length: { minimum: 3 }, allow_nil: true #allow_nil removes duplicate error messages from this validation and has_secure_pw (9.10 - https://3rd-edition.railstutorial.org/book/updating_and_deleting_users#sec-successful_edits)
 end
