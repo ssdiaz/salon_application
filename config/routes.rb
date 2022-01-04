@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get 'logout'  => 'sessions#destroy' #delete, and post do not work here ... 
   # post '/logout' => 'sessions#destroy'
 
-  resources :users
+  resources :users#, only: [:show, :new, :edit, :create, :update, :destroy]
   # resources :clients
 
 end

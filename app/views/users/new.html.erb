@@ -1,8 +1,5 @@
 <h3>Sign up Here!</h3> 
 
-API????? hmm.
-
-
 <p>
 <%= form_for @user, controller: 'users', action: 'create' do |f| %>
   <%= f.label :name %>
@@ -17,7 +14,7 @@ API????? hmm.
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %><br>
 
-  <%= f.submit "Sign Up" %>
+  <%= f.submit "Create Account", class: "btn btn-primary" %>
 <% end %>
 </p>
 

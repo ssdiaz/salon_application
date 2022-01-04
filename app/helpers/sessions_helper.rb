@@ -1,10 +1,10 @@
 module SessionsHelper
   # Resource: https://3rd-edition.railstutorial.org/book/log_in_log_out#sec-sessions_and_failed_login
 
-  # Logs in the given user.
-  # def log_in(user)
-  #   session[:user_id] = user.id
-  # end
+  # Logs in the given user. #used in sign up form - users/new
+  def log_in(user)
+    session[:user_id] = user.id
+  end
 
   # Returns the current logged-in user (if any).
   def current_user
