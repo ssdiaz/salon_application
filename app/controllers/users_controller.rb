@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    
+    # Resource: https://3rd-edition.railstutorial.org/book/sign_up#cha-sign_up
     def new
         @user = User.new
     end
