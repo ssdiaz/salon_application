@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_04_163800) do
+ActiveRecord::Schema.define(version: 2022_01_04_205039) do
 
   create_table "stylists", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -25,6 +26,8 @@ ActiveRecord::Schema.define(version: 2022_01_04_163800) do
     t.boolean "client", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "stylist_id"
+    t.integer "client_id"
   end
 
 end

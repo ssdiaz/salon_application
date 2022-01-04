@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+    has_one :stylist_id
+    has_one :client_id
+    #need to add a validation that you can't have a stylist_id & client_id. one must be nil. 
+
     before_save { email.downcase! }
 
     validates :name, presence: true, length: { minimum: 2 }, length: { maximum: 50 }

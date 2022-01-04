@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+    # after_validation_on_create :create_stylist_obj
+
     # Resource: https://3rd-edition.railstutorial.org/book/sign_up#cha-sign_up
     def new
         @user = User.new
@@ -16,7 +19,14 @@ class UsersController < ApplicationController
             log_in @user #session[:user_id] = user.id
             flash[:success] = "Welcome to the Salon App!"
             redirect_to @user #user_url(@user) or users#show -- profile page -- think I want this to be appointment in future
-          else
+          
+            # @user = User.find(params[:id])
+            if @user.client == false
+                Stylist.create
+            end
+        
+        
+        else
             render 'new'
           end
     end
@@ -30,4 +40,11 @@ class UsersController < ApplicationController
     def user_params
         params.require(:user).permit(:name, :email, :password, :password_confirmation, :client)
     end
+
+    # def create_stylist_obj
+    #     @user = User.find(params[:id])
+    #     if @user.client == false
+    #         Stylist.create
+    #     end
+    # end
 end

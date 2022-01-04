@@ -1,3 +1,3 @@
-class Stylist < User
-
+class Stylist < ApplicationRecord
+    belongs_to :user
 end
