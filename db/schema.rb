@@ -10,12 +10,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_04_213743) do
+ActiveRecord::Schema.define(version: 2022_01_04_234314) do
 
-  create_table "clients", force: :cascade do |t|
+  create_table "appointment_services", force: :cascade do |t|
+    t.integer "appointment_id"
+    t.integer "service_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "appointments", force: :cascade do |t|
+    t.datetime "date"
+    t.integer "price"
+    t.integer "minutes"
+    t.integer "client_id"
+    t.string "stylist_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.time "start_time"
+    t.time "end_time"
+    t.date "workday"
+    t.integer "stylist_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "services", force: :cascade do |t|
     t.string "name"
-    t.string "email"
-    t.string "password_digest"
+    t.integer "minutes"
+    t.integer "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "stylist_services", force: :cascade do |t|
+    t.integer "stylist_id"
+    t.integer "service_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -23,8 +56,8 @@ ActiveRecord::Schema.define(version: 2022_01_04_213743) do
   create_table "stylists", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.string "password_digest"
-    t.boolean "admin", default: false
+    t.string "handle"
+    t.integer "level"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -33,8 +66,6 @@ ActiveRecord::Schema.define(version: 2022_01_04_213743) do
     t.string "name"
     t.string "email"
     t.string "password_digest"
-    t.boolean "admin", default: false
-    t.boolean "client", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

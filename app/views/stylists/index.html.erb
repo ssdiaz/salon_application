@@ -1,12 +1,7 @@
-Stylists count = <%= @stylists.count %><br>
+<h3>View All Stylists</h3>
 
-<br>
-All Stylists:
 <ul>
-    <% @stylists.each do |stylist| %>
-        <li><%= stylist.name %></li>
-    <% end %>
+<% @stylists.each do |stylist| %>
+    <li><%= link_to stylist.name, stylist_path(stylist.id) %></li>
+<% end %>
 </ul>
-
-
-Users count = <%= @users.count %>

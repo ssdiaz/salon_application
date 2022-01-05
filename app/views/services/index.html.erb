@@ -1,0 +1,9 @@
+<h3>All Services</h3>
+
+
+<% @services.each do |service| %>
+    Name: <%= service.name%><br>
+    Duration: <%= service.minutes%><br>
+    Price: $<%= service.price%><br>
+    <br>
+<% end %>

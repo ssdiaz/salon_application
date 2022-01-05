@@ -1,0 +1,15 @@
+<h3>Make An Appointment</h3> 
+
+<p>
+<%= form_for @appointment do |f| %>
+
+    Pick Your services
+    <%# <%= f.collection_check_boxes :service_name, Service.all, :name, :name  %> %>
+
+
+
+  <%= f.submit "Create Appointment", class: "btn btn-primary" %>
+<% end %>
+</p>
+
+<p><%= link_to 'Return to Home', '/' %></p>
