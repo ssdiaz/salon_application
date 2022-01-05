@@ -1,0 +1,13 @@
+<h3>Service Details</h3>
+
+Name: <%= @service.name%><br>
+Duration: <%= @service.minutes%><br>
+Price: $<%= @service.price%><br>
+
+<br>
+See Available Stylists:
+<% @service.stylists.each do |stylist| %>
+    <li><%= link_to stylist.name, stylist_path(stylist) %></li>
+<% end %>
+
+<p><%= link_to 'Return to Services', services_path %></p>

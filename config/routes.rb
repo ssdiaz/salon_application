@@ -17,7 +17,9 @@ Rails.application.routes.draw do
 
   resources :users
   resources :clients
-  resources :stylists
+  resources :stylists do 
+    resources :services, only: [:show, :index] 
+  end
   resources :services
   resources :appointments
   resources :schedules
