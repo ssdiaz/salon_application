@@ -24,5 +24,8 @@
   <%= f.submit "Save Stylist", class: "btn btn-primary" %><br><br>
 <% end %>
 
+<br>
+<%= button_to 'Delete Stylist', stylist_path(@stylist), method: :delete, data: {confirm: "Are you sure you want to delete '#{@stylist.name}'?"} %>
 
+<br>
 <p><%= link_to 'Return to Home', '/' %></p>

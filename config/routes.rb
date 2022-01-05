@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   resources :stylists do 
     resources :services, only: [:show, :index] 
   end
-  resources :services
+  resources :services, only: [:index, :new, :create, :edit, :update, :show, :destroy]
   resources :appointments
   resources :schedules
 

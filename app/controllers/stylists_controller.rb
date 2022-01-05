@@ -37,6 +37,12 @@ class StylistsController < ApplicationController
         redirect_to stylist_path(@stylist)
     end
 
+    def destroy
+        Stylist.find(params[:id]).destroy
+        redirect_to stylists_path
+    end
+
+
     private
 
     def stylist_params
