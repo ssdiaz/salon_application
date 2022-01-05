@@ -11,8 +11,6 @@ class Stylist < ActiveRecord::Base
     has_one :schedule
 
 
-    # LEVEL = (1..5).to_a
-
     # not using the macro bc it will create a service every time
         # accepts_nested_attributes_for :services
     def services_attributes=(service_attributes)

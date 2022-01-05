@@ -12,5 +12,5 @@ Services:
 <% @stylist.services.each do |service| %>
     <li><%= link_to service.name, service_path(service) %></li>
 <% end %>
-<br>
 
+<p><%= link_to 'Edit Stylist', edit_stylist_path %></p>

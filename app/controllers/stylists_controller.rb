@@ -9,7 +9,8 @@ class StylistsController < ApplicationController
     end
 
     def show
-        @stylist = Stylist.find_by(id: params[:id])
+        # @stylist = Stylist.find_by(id: params[:id])
+        @stylist = Stylist.find(params[:id])
     end
 
     def create
@@ -24,6 +25,16 @@ class StylistsController < ApplicationController
         else
             render 'new'
         end
+    end
+
+    def edit
+        @stylist = Stylist.find(params[:id])
+    end
+
+    def update
+        @stylist = Stylist.find(params[:id])
+        @stylist.update(stylist_params)
+        redirect_to stylist_path(@stylist)
     end
 
     private
