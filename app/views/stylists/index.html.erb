@@ -1,0 +1,7 @@
+<h3>View All Stylists</h3>
+
+<ul>
+<% @stylists.each do |stylist| %>
+    <li><%= link_to stylist.name, stylist_path(stylist.id) %></li>
+<% end %>
+</ul>

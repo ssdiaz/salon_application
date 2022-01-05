@@ -1,27 +1,26 @@
 Rails.application.routes.draw do
-
-
   
+  # resources :appointments
+  # resources :schedules
+  # resources :services
   root 'static#home'
 
   get 'about', to: 'static#about'
   get 'contact', to: 'static#contact'
 
-  # get 'signup', to: 'users#new'#signup
-
-  # get 'login', to: 'sessions#new'
-  # post 'login', to: 'sessions#create'
-  # get 'logout', to: 'sessions#destroy'
-  # delete 'logout', to: 'sessions#destroy'
 
   get    'signup'  => 'users#new'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
-  get 'logout'  => 'sessions#destroy' #delete, and post do not work here ... 
+  get    'logout'  => 'sessions#destroy' #delete, and post do not work here ... 
   # post '/logout' => 'sessions#destroy'
 
-  resources :users#, only: [:show, :new, :edit, :create, :update, :destroy]
-  # resources :clients
+  resources :users #, only: [:show, :new, :edit, :create, :update, :destroy]
+  resources :clients
+  resources :stylists
+  resources :services
+  resources :appointments
+  resources :schedules
 
 end
 

@@ -1,0 +1,16 @@
+<h3>Stylist Profile</h3>
+
+Name: <%= @stylist.name %> <br>
+
+Handle: <%= @stylist.handle %> <br>
+
+Email:  <%= @stylist.email %> <br>
+
+Level:  <%= @stylist.level %> <br>
+
+Services:  
+<% @stylist.services.each do |service| %>
+    <li><%= service.name %></li>
+<% end %>
+<br>
+

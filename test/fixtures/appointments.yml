@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2022-01-04 18:40:19
+  price: 1.5
+  duration: 1.5
+  client_id: 1
+  stylist_id: MyString
+
+two:
+  date: 2022-01-04 18:40:19
+  price: 1.5
+  duration: 1.5
+  client_id: 1
+  stylist_id: MyString
