@@ -1,11 +1,10 @@
 <h3>All Services</h3>
 
-
 <% @services.each do |service| %>
-    Name: <%= service.name%><br>
+    Name: <%= service.name %><br>
     Duration: <%= service.minutes%><br>
     Price: $<%= service.price%><br>
-    <br>
+    ID: <%= link_to service.id, edit_service_path(service) %><br><br>
 <% end %>
 
 <p>
