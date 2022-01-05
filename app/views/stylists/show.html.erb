@@ -10,7 +10,7 @@ Level:  <%= @stylist.level %> <br>
 
 Services:  
 <% @stylist.services.each do |service| %>
-    <li><%= service.name %></li>
+    <li><%= link_to service.name, service_path(service) %></li>
 <% end %>
 <br>
 
