@@ -1,0 +1,44 @@
+
+
+
+<%# <%= month_calendar(events: @appointments) do |date, appointment| %> %>
+   <%# <%= date.day %>  %>
+
+  <% @appointments.each do |appointment| %>
+    <div>
+
+    </div>
+  <% end %>
+<%# <% end %> %>
+
+
+
+<%# <%= month_calendar(events: @appointments) do |date, appointment| %> %>
+   <%# <%= date.day %>  %>
+  <%# <% @appointments.each do |appointment| %> %>
+    <%# <div> %>
+      stylist
+    <%# </div> %>
+  <%# <% end %> %>
+<%# <% end %> %>
+
+
+
+
+<%= month_calendar(attribute: :start_date, end_attribute: :end_date) do |date| %>
+  <%= date.day %><br>  <%= date %><br>
+    <% @appointments.each do |appointment| %>
+      <% if date == appointment.date %>
+        APPOINTMENT #: <%= appointment.id %><br>
+        Date: <%= appointment.date.to_date %><br><br>
+        <%# Stylist: <%= display_name(appointment) %>
+        Price: $<%= appointment.price %><br>
+        Start Time: <%= appointment.start_time %><br>
+        Service: 
+          <% appointment.services.each do |service| %>
+            <li><%= service.name %></li>
+          <% end %><br>
+ 
+      <% end %>
+    <% end %>
+<% end %>

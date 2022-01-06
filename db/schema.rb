@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_04_234314) do
+ActiveRecord::Schema.define(version: 2022_01_05_222539) do
 
   create_table "appointment_services", force: :cascade do |t|
     t.integer "appointment_id"
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 2022_01_04_234314) do
     t.string "stylist_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "start_time"
+    t.datetime "end_time"
   end
 
   create_table "schedules", force: :cascade do |t|
