@@ -13,8 +13,8 @@
   
   <%= f.label :level %>
   <% (1..5).to_a.each do |number| %>
-    <%= f.label :level, number %>
     <%= f.radio_button :level, number %> 
+    <%= f.label :level, number %>
   <% end %><br><br>
   
 

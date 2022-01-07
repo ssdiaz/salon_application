@@ -1,15 +1,15 @@
 class ServicesController < ApplicationController
 
+    def new
+        @service = Service.new
+    end
+
     def index
         if params[:stylist_id]
             @services = Stylist.find(params[:stylist_id]).services
         else
             @services = Service.all
         end
-    end
-
-    def new
-        @service = Service.new
     end
 
     def create
@@ -26,6 +26,7 @@ class ServicesController < ApplicationController
 
     def show
         @service = Service.find(params[:id])
+        @stylist = Stylist.find_by(id: params[:stylist_id])
     end
 
     def edit

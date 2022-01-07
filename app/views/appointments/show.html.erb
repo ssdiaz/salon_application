@@ -1,0 +1,31 @@
+<h3>Appointment</h3>
+
+  Stylist: <%= display_stylist_name(@appointment) %><br>
+  Price: $<%= @appointment.price %><br>
+  Start Time: <%= @appointment.start_time %><br>
+  TIME: <%= @appointment.start_time.strftime("%l %P")  %><br>
+  DATE: <%= @appointment.start_time.strftime("%F")  %><br>
+  Service(s): <% @appointment.services.each do |service| %>
+                <li><%= service.name %></li>
+                <% end %><br>
+  Date <%= @appointment.date %><br>
+  TIME: <%= @appointment.start_time.strftime("%l %P")  %><br>
+  HOUR: <%= @appointment.start_time.strftime("%l")  %><br>
+
+<br><p><%= link_to 'View Calendar', appointments_path %></p><br>
+
+  <% 9.upto(20).each do |hour| %>
+    <div>
+      <%= Time.parse("#{hour}:00").strftime("%l %P") %>
+      hour: <%= hour %> | apt hour: <%= @appointment.start_time.strftime("%l") %>
+
+      <% if @appointment.start_time.strftime("%l").to_i == hour.to_i %>
+        <br>match!!!!!!!! - 
+        other format: <%= @appointment.start_time.try(:strftime, "%l") %>
+      <% end %> 
+
+    </div>
+  <% end %>
+
+ <%# <%= apt.start_time.try(:strftime, "%l") %> %>
+   

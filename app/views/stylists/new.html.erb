@@ -13,12 +13,12 @@
   
   <%= f.label :level %><br>
   <% (1..5).to_a.each do |number| %>
-    <%= f.label :level, number %>
     <%= f.radio_button :level, number %> 
+    <%= f.label :level, number %>
   <% end %><br><br>
   
 
-  <%= f.label :service, 'Link Services' %><br>
+  <%= f.label :service_ids, 'Link Services' %><br>
   <%= f.collection_check_boxes :service_ids, Service.all, :id, :name %><br><br>
   
   <%= f.label :service, 'Add Service' %> <br>
