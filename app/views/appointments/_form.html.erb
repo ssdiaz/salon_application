@@ -1,0 +1,19 @@
+<p>
+<%= form_for @appointment do |f| %>
+    
+  <%= f.label :stylist_id, 'Choose a Stylist' %><br> 
+  <%= f.collection_select :stylist_id, Stylist.all, :id, :name %> <br><br> 
+
+  <%= f.label :service_ids, 'Choose Service(s)' %><br> 
+  <%= f.collection_check_boxes :service_ids, Service.all, :id, :name %><br><br> 
+
+  <%= f.label :start_time, 'Choose a Time' %><br>
+  <%= f.datetime_local_field :start_time  %> <br><br>  
+
+  <br>
+  <%= f.submit "Save Appointment" %>
+<% end %>
+</p>
+
+
+

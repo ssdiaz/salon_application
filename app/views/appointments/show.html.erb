@@ -1,4 +1,4 @@
-<h3>Appointment</h3>
+<h3>Appointment #<%= @appointment.id %></h3>
 
   Stylist: <%= display_stylist_name(@appointment) %><br>
   Price: $<%= @appointment.price %><br>
@@ -12,20 +12,9 @@
   TIME: <%= @appointment.start_time.strftime("%l %P")  %><br>
   HOUR: <%= @appointment.start_time.strftime("%l")  %><br>
 
+
+<%= link_to 'Edit Appointment', edit_appointment_path(@appointment) %>
 <br><p><%= link_to 'View Calendar', appointments_path %></p><br>
 
-  <% 9.upto(20).each do |hour| %>
-    <div>
-      <%= Time.parse("#{hour}:00").strftime("%l %P") %>
-      hour: <%= hour %> | apt hour: <%= @appointment.start_time.strftime("%l") %>
-
-      <% if @appointment.start_time.strftime("%l").to_i == hour.to_i %>
-        <br>match!!!!!!!! - 
-        other format: <%= @appointment.start_time.try(:strftime, "%l") %>
-      <% end %> 
-
-    </div>
-  <% end %>
-
- <%# <%= apt.start_time.try(:strftime, "%l") %> %>
+ <%# <%= apt.start_time.try(:strftime, "%l") %> 
    

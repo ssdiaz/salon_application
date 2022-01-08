@@ -6,6 +6,7 @@ class StylistsController < ApplicationController
 
     def index
         @stylists = Stylist.all
+        @appointments = @appointments.filter_by_stylist(params[:appointment_ids]) if params[:appointment_ids].present?
     end
 
     def show
@@ -46,7 +47,7 @@ class StylistsController < ApplicationController
     private
 
     def stylist_params
-        params.require(:stylist).permit(:name, :email, :handle, :level, service_ids:[], services_attributes: [:name, :minutes, :price])
+        params.require(:stylist).permit(:name, :email, :handle, :level, service_ids:[], services_attributes: [:name, :minutes, :price], appointment_ids:[])
     end
 
 end

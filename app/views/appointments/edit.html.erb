@@ -1,0 +1,7 @@
+<h3>Edit Appointment</h3>
+
+<%= form_tag appointment_path(@appointment), method: "put" do %>
+    <%= render 'form' %>
+<% end %>
+
+<p><%= link_to 'Return to Home', '/' %></p>

@@ -18,10 +18,6 @@
   <%= f.label :start_time, 'Choose a Time' %>
   <%= f.datetime_local_field :start_time  %> <br><br>  
 
-
-  <%# <%= f.label :start_time, 'Choose a StartTime' %> %>
-  <%# <%= f.time_field :start_time  %> <br><br>   %>
-
    <%= f.label :end_time, 'Choose an EndTime' %>
    <%= f.time_field :end_time, {
             ampm: true,
@@ -39,24 +35,3 @@
 </p>
 
 <p><%= link_to 'Return to Home', '/' %></p>
-
-
-  <%# <%= f.time_select :start_time, { 
-        ampm: true,
-   
-        start_hour: 8, 
-        end_hour: 20,
-        discard_minute: true,
-        prompt: true,
-        prompt: { hour: "Start" }
-        } %>
-
-           <%# <%= f.time_field :end_time, {
-            ampm: true,
-     
-            start_hour: 8, 
-            end_hour: 20,
-            discard_minute: true,
-            prompt: true,
-            prompt: { hour: "End" }
-            } %>
