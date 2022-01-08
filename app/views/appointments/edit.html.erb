@@ -1,7 +1,9 @@
-<h3>Edit Appointment</h3>
+<h3>Edit Appointment #<%= @appointment.id %></h3>
 
 <%= form_tag appointment_path(@appointment), method: "put" do %>
     <%= render 'form' %>
 <% end %>
+
+<p><%= button_to 'Delete Appointment', appointment_path(@appointment), method: :delete, data: {confirm: "Are you sure you want to delete appointment ##{@appointment.id}?"} %></p>
 
 <p><%= link_to 'Return to Home', '/' %></p>
