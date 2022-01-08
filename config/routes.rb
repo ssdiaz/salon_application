@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :clients
   resources :stylists do 
     resources :services, only: [:show, :index] 
-    resources :appointments, only: [:show, :index] 
+    resources :appointments, only: [:show, :index, :new] 
   end
   resources :services, only: [:index, :new, :create, :edit, :update, :show, :destroy]
   resources :appointments

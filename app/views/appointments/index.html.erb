@@ -1,33 +1,28 @@
 <h3>Appointments Calendar</h3>
+<p><b>Total Appointments per Stylist:</b><br>
+<% @stylists.each do |stylist| %>
+  <%= stylist.name %> (id: <%= stylist.id %>) | 
+  Total: <%= @appointments.filter_by_stylist(stylist.id).count %><br>
+<% end %></p>
+<p><b>Total Apps count: <%= @appointments.count%></b><br>
+<% @appointments.each_with_index do |app, index| %>
+  <%= index +1 %>.
+  <%= link_to "Appointment #: #{app.id}", appointment_path(app) %>
+  Stylist name: <%= display_stylist_name(app) %> (id: <%= app.stylist_id %>)
+  <br>
+<% end %> </p>
 
 
-<%# <%= form_tag stylist_appointments_path do %> 
-    <%# <%= select_tag(:stylist_id, options_from_collection_for_select(@appointments.filter_by_stylist, :stylist_id, :alias), :include_blank =>true) %>  
-     <%# <%=submit_tag "Display" %>  
-<%# <% end %> 
 
 
-
-<%= form_tag stylist_appointments_path(:stylist_id), :method => 'get', :id => 'stylist_id' do  %>
-  <%= label :stylist_id, 'Choose a Stylist to Filter: ' %><br>  
-
-  <%= select_tag :stylist_id, options_from_collection_for_select(@stylists, :id, :name)  %>
-  <%# params[:stylist_id] %>
-
+<%= form_tag({}, :method => 'get') do  %>
+  <%= label_tag :stylist_id, 'Choose a Stylist to Filter:' %><br>  
+  <%= select_tag :stylist_id, options_from_collection_for_select(@stylists, :id, :name, params[:stylist_id]), include_blank: "All" %>
   <%= submit_tag "Select" %>
-   <%# <div id="stylists"><%= render stylist_appointments_path(:stylist_id) %></div> 
-   <%# <%= render 'appointments' %> 
-  <%# <%= f.submit "Look @ Appointments of Stylist", class: "btn btn-primary" %><br><br> 
-  <%# stylist_appointments_path(:stylist_id) %>
 <% end %>
 
+<br>
 
-
-
-
-
-
-<%# <%= month_calendar(events: @appointments) do |date, appointment| %> 
 <%# <%= month_calendar(attribute: :start_date, end_attribute: :end_date) do |date| %> 
 <%= month_calendar(events: @appointments) do |date, appointments| %>
   <%= date.day %> 
@@ -57,7 +52,6 @@
 
     </div>
   <% end %>
-
 
 <% end %>
 

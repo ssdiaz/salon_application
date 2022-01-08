@@ -7,11 +7,21 @@ class AppointmentsController < ApplicationController
     end
 
     def index
+
         # Scope your query to the dates being shown:
         start_date = params.fetch(:start_date, Date.today).to_date
-        @appointments = Appointment.all #where(starts_at: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
+        # @appointments = Appointment.all #where(starts_at: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
         # @appointments = @appointments.filter_by_stylist(params[:stylist_id]) if params[:stylist_id].present?
-        @appointments = Appointment.filter_by_stylist(params[:stylist_id]) if params[:stylist_id].present?
+        # @appointments = Appointment.filter_by_stylist(params[:stylist_id]) if params[:stylist_id].present?
+        puts params 
+        puts "- - - - - - - - - - - - - - - - - - - - - - - - - - - "
+
+        if params[:stylist_id].present? 
+            @appointments = Appointment.filter_by_stylist(params[:stylist_id]) 
+        else
+            @appointments = Appointment.all  
+        end
+        
         @stylists = Stylist.all
     end
 

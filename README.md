@@ -30,5 +30,8 @@ RESOURCES
 - Build Calendar: https://www.youtube.com/watch?v=W62HuiE3e-o, https://github.com/excid3/simple_calendar/issues/170
 - Calendar for time slots: https://www.youtube.com/watch?v=PJwZ-07greo
 - Scope - https://www.justinweiss.com/articles/search-and-filter-rails-models-without-bloating-your-controller/
+- For a Filter on the Calendar: https://medium.com/@ejyi/nested-resources-and-form-tag-url-option-in-rails-27343fd6dce9, https://apidock.com/rails/v5.2.3/ActionView/Helpers/FormTagHelper/select_tag
+
+
 
 
