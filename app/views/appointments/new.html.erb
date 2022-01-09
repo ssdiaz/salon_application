@@ -1,37 +1,3 @@
 <h3>Make An Appointment</h3> 
 
-<p>
-<%= form_for @appointment do |f| %>
-    
-  <%= f.label :stylist_id, 'Choose a Stylist' %><br> 
-  <%= f.collection_select :stylist_id, Stylist.all, :id, :name %> <br><br> 
-
-  <%= f.label :service_ids, 'Choose Service(s)' %><br> 
-  <%= f.collection_check_boxes :service_ids, Service.all, :id, :name %><br><br> 
-  
-  <%= f.label :date, 'Choose a Date' %><br> 
-  <%= f.date_field :date %><br><br> 
-
-  <%= f.label :price, 'Price' %><br> 
-  <%= f.text_field :price %><br><br> 
-
-  <%= f.label :start_time, 'Choose a Time' %>
-  <%= f.datetime_local_field :start_time  %> <br><br>  
-
-   <%= f.label :end_time, 'Choose an EndTime' %>
-   <%= f.time_field :end_time, {
-            ampm: true,
-            start_hour: 8, 
-            end_hour: 20,
-            discard_minute: true,
-            prompt: true,
-            prompt: { hour: "End" }
-            }
-  %>    (should be set based on Services Selected & their minutes)<br><br>
-
-  <br>
-  <%= f.submit "Create Appointment" %>
-<% end %>
-</p>
-
-<p><%= link_to 'Return to Home', '/' %></p>
+<%= render partial: "form", locals: {submit_tag: "Create Appointment"} %>
