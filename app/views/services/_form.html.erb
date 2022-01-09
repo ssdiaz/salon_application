@@ -1,0 +1,15 @@
+<%= form_for @service do |f| %>
+  <%= f.label :name%>
+  <%= f.text_field :name, class: 'form-control' %><br><br>
+
+  <%= f.label :minutes %>
+  <%= f.text_field :minutes, class: 'form-control' %><br><br>
+
+  <%= f.label :price %>
+  <%= f.text_field :price, class: 'form-control' %><br><br>
+
+  <%= f.label :stylist, 'Link Stylists' %> 
+  <%= f.collection_check_boxes :stylist_ids, Stylist.all, :id, :name %><br><br>
+
+  <%= f.submit 'Save Service', class: 'btn btn-primary' %><br>
+<% end %>
