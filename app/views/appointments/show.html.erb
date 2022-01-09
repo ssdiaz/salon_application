@@ -3,14 +3,13 @@
   Stylist: <%= display_stylist_name(@appointment) %><br>
   Price: $<%= @appointment.price %><br>
   Start Time: <%= @appointment.start_time %><br>
-  TIME: <%= @appointment.start_time.strftime("%l %P")  %><br>
-  DATE: <%= @appointment.start_time.strftime("%F")  %><br>
-  Service(s): <% @appointment.services.each do |service| %>
-                <li><%= service.name %></li>
-                <% end %><br>
-  Date <%= @appointment.date %><br>
-  TIME: <%= @appointment.start_time.strftime("%l %P")  %><br>
-  HOUR: <%= @appointment.start_time.strftime("%l")  %><br>
+   TIME: <%= @appointment.start_time.strftime("%l %p") %><br> 
+   DATE: <%= @appointment.start_time.strftime("%F") %><br> 
+  Service(s): 
+  <% @appointment.services.each do |service| %>
+    <li><%= service.name %></li>
+  <% end %><br>
+  Date <%= @appointment.date %><br> - need to set this after intialization?/ after save??
 
 
 <p><%= link_to 'Edit Appointment', edit_appointment_path(@appointment) %></p>

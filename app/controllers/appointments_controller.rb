@@ -12,7 +12,10 @@ class AppointmentsController < ApplicationController
 
     def create
         @appointment = Appointment.new(appointment_params) #(appointment_params.merge(user_id: current_user.id))
+        
         puts params
+        puts "- - - - - - - - - - - - - - - - - "
+
          if @appointment.save
             redirect_to @appointment
          else
