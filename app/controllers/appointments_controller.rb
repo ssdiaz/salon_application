@@ -21,6 +21,9 @@ class AppointmentsController < ApplicationController
          else
             render 'new'
          end
+
+
+
     end
 
 

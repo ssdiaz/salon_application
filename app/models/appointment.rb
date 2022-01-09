@@ -23,9 +23,20 @@ class Appointment < ActiveRecord::Base
     end
 
     def stylist_has_service?
-        errors.add(:base, 'Please choose a different Stylist that offers the services selected') unless self.stylist.services.include?(:service)
+        if self.stylist.services.include?(:service)
+            errors.add(:base, 'Please choose a different Stylist that offers the services selected') 
+        end
     end
 
     scope :filter_by_stylist, -> (stylist_id) { where stylist_id: stylist_id }
+
+
+    after_validation :set_price #, only: [:create, :update]
+
+    def set_price
+        # @appointment = Appointment.find(params[:id])
+        self.price = self.services.collect {|service| service.price}.sum
+        # self.save
+    end
 
 end
