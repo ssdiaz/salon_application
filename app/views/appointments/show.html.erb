@@ -3,25 +3,30 @@
 <%= render partial: 'errors/error', locals: {object: @appointment} %>
 
 
-  Stylist: <%= display_stylist_name(@appointment) %><br>
-  Price: <br>
-  Start Time: <%= @appointment.start_time %><br>
-   TIME: <%= @appointment.start_time.strftime("%l %p") %><br> 
-   DATE: <%= @appointment.start_time.strftime("%F") %><br> 
-  Service(s): 
-  <% @appointment.services.each do |service| %>
-    <li><%= service.name %>, 
-    price: <%= service.price %>, 
-    mins: <%= service.minutes %></li>
-  <% end %><br>
+Stylist: <%= display_stylist_name(@appointment) %>
 
-  Date <%= @appointment.date %><br> - need to set this after intialization?/ after save??
-  <br>
-  <b>
-    Price: $<%= @appointment.cost %><br>
-    Duration: <%= @appointment.duration %><br>
-    Date: <%= @appointment.date %><br>
-  </b>
+<br>
+<br>
+
+~ Start Time: <%= @appointment.start_time %> ~
+<br>
+TIME: <%= @appointment.start_time.strftime("%I:%M:%S %p") %>
+
+<br> 
+<br>
+
+Service(s): 
+<% @appointment.services.each do |service| %>
+  <li><%= service.name %>, 
+  price: <%= service.price %>, 
+  mins: <%= service.minutes %></li>
+<% end %>
+<br>
+
+  Price: $<%= @appointment.cost %><br>
+  Duration: <%= @appointment.duration %><br>
+  Date: <%= @appointment.date %><br>
+  End Time: <%= @appointment.end_time.strftime("%I:%M:%S %p") %><br>
 
 <p><%= link_to 'Edit Appointment', edit_appointment_path(@appointment) %></p>
 <p><%= link_to "View Stylist's Calendar", stylist_appointments_path(stylist_id(@appointment)) %></p><br> 

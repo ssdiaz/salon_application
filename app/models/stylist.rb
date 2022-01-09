@@ -11,7 +11,7 @@ class Stylist < ActiveRecord::Base
     before_save { email.downcase! }
     before_save :titleize_name
 
-    validate :has_at_least_one_service?
+    validate :has_at_least_one_service? #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     validates_presence_of :level, message: 'must be selected' 
     validates :name, presence: true, length: { minimum: 2 }, length: { maximum: 50 }

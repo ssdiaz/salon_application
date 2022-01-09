@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2022_01_05_222539) do
   end
 
   create_table "appointments", force: :cascade do |t|
-    t.datetime "date"
+    t.date "date"
     t.integer "cost"
     t.integer "duration"
     t.integer "client_id"

@@ -14,7 +14,5 @@ module StylistsHelper
         # end
     end
 
-
-
 end
   

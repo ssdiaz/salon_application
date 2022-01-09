@@ -42,12 +42,22 @@ class Appointment < ActiveRecord::Base
 
 
 
-    after_validation :set_cost, :set_duration #, only: [:create, :update]
+    after_validation :set_cost, :set_duration, :set_date, :set_endtime     #, only: [:create, :update]
+
     def set_cost
         self.cost = self.services.collect {|service| service.price}.sum
     end
+
     def set_duration
         self.duration = self.services.collect {|service| service.minutes}.sum
+    end
+
+    def set_date
+        self.date = self.start_time
+    end
+
+    def set_endtime
+        self.end_time = self.start_time  + (self.duration*60)
     end
 
 end
