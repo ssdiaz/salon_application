@@ -4,6 +4,8 @@ Name: <%= @service.name %><br>
 Duration: <%= @service.minutes%><br>
 Price: $<%= @service.price%><br>
 
+<p><%= link_to 'Edit Service', edit_service_path(@service) %></p>
+
 <%# <br> %>
 <%# See Available Stylists: %>
 <%# <% @service.stylists.each do |stylist| %> 

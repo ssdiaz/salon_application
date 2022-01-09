@@ -2,9 +2,19 @@ class ServicesController < ApplicationController
 
     def new
         @service = Service.new
+        puts params
+        puts "- - - -- -  -- - - - -- -  - - -"
+        puts params[:stylist_ids]
+        puts "- - - -- -  -- - - - -- -  - - -"
     end
 
     def create
+        puts params
+        puts "- - - -- -  -- - - - -- -  - - -"
+        puts params[:stylist_ids]
+        puts "- - - -- -  -- - - - -- -  - - -"
+
+
         @service = Service.new(service_params)
         if @service.save
 

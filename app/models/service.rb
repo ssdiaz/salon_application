@@ -5,4 +5,26 @@ class Service < ActiveRecord::Base
     has_many :stylist_services
     has_many :stylists, through: :stylist_services
 
+    validates :name, presence: true, length: { minimum: 2 }, length: { maximum: 50 }, uniqueness: { case_sensitive: false }
+    validates :minutes, presence: true, numericality: true
+    validates :price, presence: true
+    
+
+
+
+    before_save :titleize_name
+
+
+    def titleize_name
+        self.name = name.titleize  
+    end
+
+
+    validate :has_at_least_one_stylist?
+
+    def has_at_least_one_stylist?
+      errors.add(:base, 'Must have at least one Stylist') if self.stylists.empty?
+    end
+
+
 end

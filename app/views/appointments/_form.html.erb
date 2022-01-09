@@ -8,14 +8,15 @@
     <%= f.collection_check_boxes :service_ids, Service.all, :id, :name %><br><br> 
   <% end %>
  
+
   <% if params[:stylist_id] %>
-    <%= f.hidden_field :stylist_id %>
-    <%= f.label :stylist_id, "Stylist: #{display_stylist_name(@appointment)}" %><br> <br>
+    <%= f.label :stylist_id, "Stylist: #{display_stylist_name(@appointment)}" %><br><br>
   <% else %>
-    <%= f.label :stylist_id, 'Choose a Stylist' %><br> 
+  <%= f.label :stylist_id, 'Choose a Stylist' %><br> 
     <%= f.collection_select :stylist_id, Stylist.all, :id, :name %> <br><br> 
   <% end %>
 
+  <br>
   <%= f.label :start_time, 'Choose a Time' %><br>
   <%= f.datetime_local_field :start_time  %> <br><br>  
 
@@ -23,6 +24,3 @@
   <%= f.submit submit_tag %>
 <% end %>
 </div>
-
-
-

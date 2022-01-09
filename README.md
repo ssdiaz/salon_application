@@ -31,7 +31,11 @@ RESOURCES
 - Calendar for time slots: https://www.youtube.com/watch?v=PJwZ-07greo
 - Scope - https://www.justinweiss.com/articles/search-and-filter-rails-models-without-bloating-your-controller/
 - For a Filter on the Calendar: https://medium.com/@ejyi/nested-resources-and-form-tag-url-option-in-rails-27343fd6dce9, https://apidock.com/rails/v5.2.3/ActionView/Helpers/FormTagHelper/select_tag
+- 'form_for' helper: https://guides.rubyonrails.org/form_helpers.html
 
+- 'time_select' using a form: https://stackoverflow.com/questions/42142020/i-only-want-certain-hours-on-my-rails-time-select-form
+
+- days of week: https://stackoverflow.com/questions/17310991/display-list-of-days-in-a-week-in-rails-using-datedaynames
 
 
 

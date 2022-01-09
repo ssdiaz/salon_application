@@ -1,5 +1,7 @@
 <%= form_for @stylist do |f| %>
 
+  <%= render partial: 'errors/error', locals: {object: @stylist} %>
+
   <%= f.label :name%>
   <%= f.text_field :name, class: 'form-control' %><br><br>
 
