@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 2022_01_05_222539) do
 
   create_table "appointments", force: :cascade do |t|
     t.datetime "date"
-    t.integer "price"
-    t.integer "minutes"
+    t.integer "cost"
+    t.integer "duration"
     t.integer "client_id"
     t.string "stylist_id"
     t.datetime "created_at", precision: 6, null: false

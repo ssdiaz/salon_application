@@ -21,9 +21,6 @@ class AppointmentsController < ApplicationController
          else
             render 'new'
          end
-
-
-
     end
 
 
@@ -59,7 +56,11 @@ class AppointmentsController < ApplicationController
     def update
         @appointment = Appointment.find(params[:id])
         @appointment.update(appointment_params)
-        redirect_to appointment_path(@appointment)
+        if @appointment.valid?
+            redirect_to appointment_path(@appointment)
+        else
+            render 'edit'
+        end
     end
 
     def destroy

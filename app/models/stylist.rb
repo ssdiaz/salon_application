@@ -15,11 +15,11 @@ class Stylist < ActiveRecord::Base
 
     validates_presence_of :level, message: 'must be selected' 
     validates :name, presence: true, length: { minimum: 2 }, length: { maximum: 50 }
-    validates :handle, presence: true, length: { minimum: 2 }, length: { maximum: 50 }
+    validates :handle, presence: true, length: { minimum: 2 }, length: { maximum: 25 }
  
 
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-    validates :email, presence: true, length: { minimum: 2 }, length: { maximum: 50 }, uniqueness: { case_sensitive: false }, format: { with: VALID_EMAIL_REGEX }
+    validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: VALID_EMAIL_REGEX }
 
 
     #For Creating New Service when Creating New Stylist: ... # note: not using the macro bc it will create a service every time ... => # accepts_nested_attributes_for :services

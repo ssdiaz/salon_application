@@ -16,7 +16,7 @@ class Service < ActiveRecord::Base
 
 
     def titleize_name
-        self.name = name.titleize  
+      self.name = name.titleize  
     end
 
 
