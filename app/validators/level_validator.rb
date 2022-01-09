@@ -1,8 +1,5 @@
 class LevelValidator < ActiveModel::Validator
 
-
-
-
         def validate(record)
           unless record.level.match? 1,2,3,4,5
             record.errors.add :limit, "Need a name starting with X please!"

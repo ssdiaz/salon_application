@@ -3,26 +3,10 @@ class AppointmentsController < ApplicationController
 
 
     def new
-        @appointment = Appointment.new
-    end
-
-    def index
-
-        # Scope your query to the dates being shown:
-        start_date = params.fetch(:start_date, Date.today).to_date
-        # @appointments = Appointment.all #where(starts_at: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
-        # @appointments = @appointments.filter_by_stylist(params[:stylist_id]) if params[:stylist_id].present?
-        # @appointments = Appointment.filter_by_stylist(params[:stylist_id]) if params[:stylist_id].present?
+        @appointment = Appointment.new(stylist_id: params[:stylist_id])
         puts params 
-        puts "- - - - - - - - - - - - - - - - - - - - - - - - - - - "
-
-        if params[:stylist_id].present? 
-            @appointments = Appointment.filter_by_stylist(params[:stylist_id]) 
-        else
-            @appointments = Appointment.all  
-        end
-        
-        @stylists = Stylist.all
+        puts "- - - - - - - !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+        # if params[:stylist_id] && !Stylist.exists?(params[:stylist_id])
     end
 
     def create
@@ -34,6 +18,27 @@ class AppointmentsController < ApplicationController
             render 'new'
          end
     end
+
+
+    def index
+        # Scope your query to the dates being shown:
+        start_date = params.fetch(:start_date, Date.today).to_date
+        # @appointments = Appointment.all #where(starts_at: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
+        # @appointments = @appointments.filter_by_stylist(params[:stylist_id]) if params[:stylist_id].present?
+        # @appointments = Appointment.filter_by_stylist(params[:stylist_id]) if params[:stylist_id].present?
+        puts params 
+        puts "- - - - - - - - - - - - - - - - - - - - - - - - - - - "
+
+        if params[:stylist_id].present? 
+            @appointments = Appointment.filter_by_stylist(params[:stylist_id]) 
+            @stylist = Stylist.find(params[:stylist_id])
+        else
+            @appointments = Appointment.all
+        end
+        
+        @stylists = Stylist.all
+    end
+
 
     def show
         @appointment = Appointment.find(params[:id])

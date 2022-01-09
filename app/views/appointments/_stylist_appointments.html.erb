@@ -1,0 +1,16 @@
+<div>
+    <b><%= @stylist.name %>'s Appointment Total: <%= @appointments.count %></b><br>
+    <ol>
+        <% @appointments.each do |app| %>
+                <li>
+                    <%= link_to "Appointment #: #{app.id}", appointment_path(app) %> | 
+                    Stylist: <%= display_stylist_name(app) %> (id: <%= app.stylist_id %>)
+                </li>  
+        <% end %> 
+    </ol>
+</div>
+
+<p><%= link_to "Make New Appointment with #{@stylist.name}", new_stylist_appointment_path(@stylist) %></p>
+
+
+<p><%= link_to 'All Stylist Appointments', appointments_path %></p>

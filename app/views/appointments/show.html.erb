@@ -14,7 +14,7 @@
 
 
 <p><%= link_to 'Edit Appointment', edit_appointment_path(@appointment) %></p>
-<br><p><%= link_to 'View Calendar', appointments_path %></p><br>
+<p><%= link_to "View Stylist's Calendar", stylist_appointments_path(stylist_id(@appointment)) %></p><br> 
 
  <%# <%= apt.start_time.try(:strftime, "%l") %> 
    

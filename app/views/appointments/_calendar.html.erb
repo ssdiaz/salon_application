@@ -1,0 +1,31 @@
+<%# <%= month_calendar(attribute: :start_date, end_attribute: :end_date) do |date| %> 
+<%= month_calendar(events: @appointments) do |date, appointments| %>
+  <%= date.day %> 
+
+  <% 9.upto(20).each do |hour| %>
+    <div>
+      <b><%= Time.parse("#{hour}:00").strftime("%l %p") %></b>
+
+      <% appointments.each do |appointment|  %>
+        <% if appointment.start_time.strftime("%H").to_i  == hour %> 
+          <div>
+            <%= link_to "Appointment #: #{appointment.id}", appointment_path(appointment) %><br>
+            Stylist: <%= display_stylist_name(appointment) %> (id: <%= appointment.stylist_id %>)<br>
+            Price: $<%= appointment.price %><br>
+            Start Time: <%= appointment.start_time %><br>
+              TIME: <%= appointment.start_time.strftime("%l:%M %P") %><br>
+              DATE: <%= appointment.start_time.strftime("%F") %><br>
+            Service: 
+            <% appointment.services.each do |service| %>
+              <li><%= service.name %></li>
+            <% end %>
+          </div>
+          TIME in select: <%= appointment.start_time.strftime("%H").to_i  %><br>
+          HOUR in select: <%= hour %><br>
+        <% end %> 
+      <% end %>
+
+    </div>
+  <% end %>
+
+<% end %>
