@@ -31,15 +31,6 @@ ActiveRecord::Schema.define(version: 2022_01_05_222539) do
     t.datetime "end_time"
   end
 
-  create_table "schedules", force: :cascade do |t|
-    t.time "start_time"
-    t.time "end_time"
-    t.date "workday"
-    t.integer "stylist_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "services", force: :cascade do |t|
     t.string "name"
     t.integer "minutes"

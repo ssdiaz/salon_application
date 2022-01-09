@@ -1,6 +1,13 @@
 <div>
 <%= form_for @appointment do |f| %>
-         
+
+  <%= f.label :service_ids, 'Choose Service(s)' %><br> 
+  <% if params[:stylist_id] %>
+    <%= f.collection_check_boxes :service_ids, @stylist.services, :id, :name %><br><br> 
+  <% else %>
+    <%= f.collection_check_boxes :service_ids, Service.all, :id, :name %><br><br> 
+  <% end %>
+ 
   <% if params[:stylist_id] %>
     <%= f.hidden_field :stylist_id %>
     <%= f.label :stylist_id, "Stylist: #{display_stylist_name(@appointment)}" %><br> <br>
@@ -8,9 +15,6 @@
     <%= f.label :stylist_id, 'Choose a Stylist' %><br> 
     <%= f.collection_select :stylist_id, Stylist.all, :id, :name %> <br><br> 
   <% end %>
-
-  <%= f.label :service_ids, 'Choose Service(s)' %><br> 
-  <%= f.collection_check_boxes :service_ids, Service.all, :id, :name %><br><br> 
 
   <%= f.label :start_time, 'Choose a Time' %><br>
   <%= f.datetime_local_field :start_time  %> <br><br>  

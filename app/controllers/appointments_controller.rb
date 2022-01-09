@@ -7,6 +7,7 @@ class AppointmentsController < ApplicationController
         puts params 
         puts "- - - - - - - !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
         # if params[:stylist_id] && !Stylist.exists?(params[:stylist_id])
+        @stylist = Stylist.find(params[:stylist_id]) if params[:stylist_id]
     end
 
     def create

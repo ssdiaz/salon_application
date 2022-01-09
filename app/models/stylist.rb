@@ -16,8 +16,7 @@ class Stylist < ActiveRecord::Base
     def services_attributes=(service_attributes)
         service_attributes.values.each do |service_attribute|
             service = Service.find_or_create_by(service_attribute)
-        #   self.post_services.build(service: service)
-            self.services << service
+            self.services << service #   self.post_services.build(service: service)
         end
     end
 

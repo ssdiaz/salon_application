@@ -8,5 +8,4 @@ class Appointment < ActiveRecord::Base
     has_many :services, through: :appointment_services
 
     scope :filter_by_stylist, -> (stylist_id) { where stylist_id: stylist_id }
-
 end
