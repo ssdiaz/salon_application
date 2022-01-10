@@ -23,9 +23,8 @@ class Appointment < ActiveRecord::Base
     end
 
 
-    # validate :stylist_has_service?
-    # validate :stylist_has_service?
-    before_validation :stylist_has_service?, only: [:create, :new]
+
+    before_validation :stylist_has_service?#, only: [:create, :new]
 
     def stylist_has_service?
         if self.stylist
@@ -39,10 +38,7 @@ class Appointment < ActiveRecord::Base
     end
 
 
-
-
-
-    after_validation :set_cost, :set_duration, :set_date, :set_endtime     #, only: [:create, :update]
+    after_save :set_cost, :set_duration, :set_end_time
 
     def set_cost
         self.cost = self.services.collect {|service| service.price}.sum
@@ -52,11 +48,7 @@ class Appointment < ActiveRecord::Base
         self.duration = self.services.collect {|service| service.minutes}.sum
     end
 
-    def set_date
-        self.date = self.start_time
-    end
-
-    def set_endtime
+    def set_end_time
         self.end_time = self.start_time  + (self.duration*60)
     end
 

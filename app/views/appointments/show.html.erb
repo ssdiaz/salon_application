@@ -10,7 +10,7 @@ Stylist: <%= display_stylist_name(@appointment) %>
 
 ~ Start Time: <%= @appointment.start_time %> ~
 <br>
-TIME: <%= @appointment.start_time.strftime("%I:%M:%S %p") %>
+TIME: <%= start_time(@appointment) %>
 
 <br> 
 <br>
@@ -25,8 +25,8 @@ Service(s):
 
   Price: $<%= @appointment.cost %><br>
   Duration: <%= @appointment.duration %><br>
-  Date: <%= @appointment.date %><br>
-  End Time: <%= @appointment.end_time.strftime("%I:%M:%S %p") %><br>
+  Date: <%= date(@appointment) %><br>
+  End Time: <%= end_time(@appointment) %><br>
 
 <p><%= link_to 'Edit Appointment', edit_appointment_path(@appointment) %></p>
 <p><%= link_to "View Stylist's Calendar", stylist_appointments_path(stylist_id(@appointment)) %></p><br> 

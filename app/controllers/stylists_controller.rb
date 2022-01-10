@@ -17,11 +17,8 @@ class StylistsController < ApplicationController
     def create
         @stylist = Stylist.new(stylist_params)
         if @stylist.save
-
-            puts params
-
-            log_in @stylist #session[:user_id] = stylist.id
-            flash[:success] = "Welcome to the Salon App!"
+            # log_in @stylist #session[:user_id] = stylist.id
+            # flash[:success] = "Welcome to the Salon App! MERP"
             redirect_to @stylist #user_url(@stylist) or users#show -- profile page -- think I want this to be appointment in future
         else
             render 'new'
@@ -35,7 +32,11 @@ class StylistsController < ApplicationController
     def update
         @stylist = Stylist.find(params[:id])
         @stylist.update(stylist_params)
-        redirect_to stylist_path(@stylist)
+        if @stylist.save
+            redirect_to @stylist
+        else
+            render 'edit'
+        end
     end
 
     def destroy

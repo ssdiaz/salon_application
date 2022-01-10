@@ -17,8 +17,8 @@
     <%= f.label :level, number %>
   <% end %><br><br>
   
-  <%= f.label :service %> 
+  <%= f.label :service_ids, "Service(s)" %> 
   <%= f.collection_check_boxes :service_ids, Service.all, :id, :name %><br><br>
-  
+
   <%= f.submit submit_tag, class: "btn btn-primary" %><br><br>
 <% end %>

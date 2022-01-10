@@ -10,7 +10,7 @@ class Service < ActiveRecord::Base
   validates :price, presence: true, numericality: true
   
   before_save :titleize_name
-  validate :has_at_least_one_stylist?   #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  validate :has_at_least_one_stylist?   #validate!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
   private 
     def titleize_name
