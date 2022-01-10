@@ -5,25 +5,36 @@ class UsersController < ApplicationController
     end
     
     def create
-        # User.create(user_params)
-        # @user = User.create(user_params)
-        # return redirect_to controller: 'users', action: 'new' unless @user.save
-        # session[:user_id] = @user.id
-        # redirect_to controller: 'static', action: 'home'
-
         @user = User.new(user_params)
         if @user.save
             log_in @user #session[:user_id] = user.id
             flash[:success] = "Welcome to the Salon App!"
-            redirect_to @user #user_url(@user) or users#show -- profile page -- think I want this to be appointment in future
+            redirect_to @user
         else
             render 'new'
         end
-        
+    end
+
+    def index #DEF need to limit
+        @users = User.all
     end
 
     def show
         @user = User.find(params[:id])
+    end
+
+    def edit
+        @user = User.find(params[:id])
+    end
+
+    def update
+        @user = User.find(params[:id])
+        @user.update(user_params)
+        if @user.valid?
+            redirect_to @user
+        else
+            render 'edit'
+        end
     end
 
     private

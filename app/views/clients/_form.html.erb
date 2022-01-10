@@ -1,0 +1,15 @@
+<%= form_for @client do |f| %>
+
+  <%= render partial: 'errors/error', locals: {object: @client} unless @client.errors.empty? %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control' %><br><br>
+
+  <%= f.label :email %>
+  <%= f.text_field :email, class: 'form-control' %><br><br>
+
+  <%= f.label :phone %>
+  <%= f.text_field :phone, class: 'form-control' %><br><br>
+
+  <%= f.submit 'Save', class: 'btn btn-primary' %><br>
+<% end %>

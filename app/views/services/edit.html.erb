@@ -3,4 +3,4 @@
 <%= render partial: 'form' %>
 
 <br>
-<%= button_to 'Delete Service', service_path(@service), method: :delete, data: {confirm: "Are you sure you want to delete '#{@service.name}'?"} %>
+<%= button_to 'Delete', service_path(@service), method: :delete, data: {confirm: "Are you sure you want to delete '#{@service.name}'?"} %>

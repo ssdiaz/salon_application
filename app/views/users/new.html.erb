@@ -1,24 +1,7 @@
 <h3>Sign up Here!</h3> 
 
-<p>
-<%= form_for @user, controller: 'users', action: 'create' do |f| %>
 
- <%= render 'shared/error_messages' %>  <%#partail %>
+<%= render partial: 'form', locals: {submit_tag: 'Create'}  %>
 
-  <%= f.label :name %>
-  <%= f.text_field :name, class: 'form-control' %><br>
-
-  <%= f.label :email %>
-  <%= f.text_field :email, class: 'form-control' %><br>
-
-  <%= f.label :password %>
-  <%= f.password_field :password, class: 'form-control' %><br>
-
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation, class: 'form-control' %><br>
-
-  <%= f.submit "Create Account", class: "btn btn-primary" %>
-<% end %>
-</p>
 
 <p><%= link_to 'Return to Home', '/' %></p>

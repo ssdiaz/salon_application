@@ -3,15 +3,18 @@ class AppointmentsController < ApplicationController
 
     def new
         @appointment = Appointment.new(stylist_id: params[:stylist_id])
-        @stylist = Stylist.find(params[:stylist_id]) if params[:stylist_id]
+        # @stylist = Stylist.find(params[:stylist_id]) if params[:stylist_id]
+        @stylist = @appointment.stylist if params[:stylist_id]
+        # @stylist = Stylist.find(params[:stylist_id]) 
     end
 
     def create
-        @appointment = Appointment.new(appointment_params) #(appointment_params.merge(user_id: current_user.id))
+        # @appointment = Appointment.new(appointment_params) #(appointment_params.merge(client_id: current_user.id))
+        @appointment = Appointment.new(appointment_params.merge(client_id: current_user.id))
         if @appointment.save
-        redirect_to @appointment
+            redirect_to @appointment
         else
-        render 'new'
+            render 'new'
         end
     end
 
@@ -20,7 +23,9 @@ class AppointmentsController < ApplicationController
         start_date = params.fetch(:start_date, Date.today).to_date   # Scope your query to the dates being shown
         if params[:stylist_id].present? 
             @appointments = Appointment.filter_by_stylist(params[:stylist_id]) 
-            @stylist = Appointment.by_stylist(params[:stylist_id])
+            # @stylist = Appointment.by_stylist(params[:stylist_id]) #!!!!!!!!!!!!!!!!!!!!!!
+            # @stylist = Stylist.find(params[:stylist_id]) 
+            @stylist = Appointment.find_by(stylist_id: params[:stylist_id]).stylist
         else
             @appointments = Appointment.all
         end
@@ -55,7 +60,7 @@ class AppointmentsController < ApplicationController
     private
 
     def appointment_params
-        params.require(:appointment).permit(:date, :price, :minutes, :stylist_id, :start_time, :end_time, service_ids:[]) #:client_id,
+        params.require(:appointment).permit(:date, :price, :minutes, :stylist_id, :start_time, :end_time, :client_id, service_ids:[])
     end
 
 end

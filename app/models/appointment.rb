@@ -1,13 +1,5 @@
 class Appointment < ActiveRecord::Base
-
-    scope :filter_by_stylist, -> (stylist_id) { where stylist_id: stylist_id }
-
-    def self.by_stylist(stylist_id)
-        where(stylist: stylist_id)
-    end
-
-
-    # belongs_to :client
+    belongs_to :client
     belongs_to :stylist
 
     has_many :appointment_services
@@ -20,6 +12,7 @@ class Appointment < ActiveRecord::Base
     before_validation :stylist_has_service?
     after_validation :set_cost, :set_duration, :set_end_time
 
+    scope :filter_by_stylist, -> (stylist_id) { where stylist_id: stylist_id }
 
     def has_at_least_one_service?
       errors.add(:base, 'Must have at least one Service') if self.services.empty?
@@ -37,15 +30,15 @@ class Appointment < ActiveRecord::Base
     end 
 
     def set_cost
-        self.cost = self.services.collect {|service| service.price}.sum
+        self.cost = self.services.collect {|service| service.price}.sum 
+        # self.cost = self.services.pluck(:price).sum
     end
 
     def set_duration
-        self.duration = self.services.collect {|service| service.minutes}.sum
+        self.duration = self.services.collect {|service| service.minutes}.sum 
     end
 
     def set_end_time
-        self.end_time = self.start_time  + (self.duration*60)
+        self.end_time = self.start_time  + (self.duration*60) unless !self.end_time
     end
-
 end

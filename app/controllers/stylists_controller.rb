@@ -46,7 +46,7 @@ class StylistsController < ApplicationController
     private
 
     def stylist_params
-        params.require(:stylist).permit(:name, :email, :handle, :level, service_ids:[], appointment_ids:[]) #, services_attributes: [:name, :minutes, :price]
+        params.require(:stylist).permit(:name, :email, :handle, :level, service_ids:[], appointment_ids:[]) 
     end
 
 end
