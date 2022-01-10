@@ -2,8 +2,8 @@
 <%= form_for @appointment do |f| %>
   <%= render partial: 'errors/error', locals: {object: @appointment} %>
 
-  <%# <%= f.label :client_id, 'Choose a Client' %><br>  
-  <%# <%= f.collection_select :client_id, Client.all, :id, :name, include_blank: true %><br>
+  <%= f.label :client_id, 'Choose a Client' %><br>  
+  <%= f.collection_select :client_id, Client.all, :id, :name, include_blank: true %><br>
   
   <br>
   <%= f.label :service_ids, 'Choose Service(s)' %><br> 

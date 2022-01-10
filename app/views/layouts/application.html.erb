@@ -23,6 +23,7 @@
 
 
       <% if logged_in? %>
+        <li><%= link_to 'Clients', clients_path %></li>
         <li><%= link_to 'Book Appointment', new_appointment_path %></li>
         <li><%= link_to 'View All Appointments', appointments_path %></li>
         <li class="dropdown">

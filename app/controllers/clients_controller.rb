@@ -1,4 +1,6 @@
 class ClientsController < ApplicationController
+    before_action :require_logged_in, only: [:new, :edit]
+    
     def new
         @client = Client.new
     end
