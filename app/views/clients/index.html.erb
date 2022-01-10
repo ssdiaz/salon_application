@@ -1,3 +1,17 @@
+<h3>Manage Clients</h3>
+
+<ol>
 <% @clients.each do |client| %>
-    <%= client.name %>, <%= client.id %><br>
+    <li>
+    ID: <%= link_to client.id, edit_service_path(client) %><br>
+    Name: <%= client.name %><br>
+    Email: <%= client.email %><br>
+    Phone: $<%= client.phone %><br>
+    <br>
+    </li>
 <% end %>
+</ol>
+
+<p>
+<%= link_to 'Create a New Client', new_client_path %>
+</p>

@@ -1,5 +1,7 @@
 class AppointmentsController < ApplicationController
     # has_scope :filter_by_stylist
+    before_action :require_logged_in
+    # skip_before_action :require_login, only: [:index] #for anyone to see a list of appointments
 
     def new
         @appointment = Appointment.new(stylist_id: params[:stylist_id])
@@ -9,8 +11,8 @@ class AppointmentsController < ApplicationController
     end
 
     def create
-        # @appointment = Appointment.new(appointment_params) #(appointment_params.merge(client_id: current_user.id))
-        @appointment = Appointment.new(appointment_params.merge(client_id: current_user.id))
+        @appointment = Appointment.new(appointment_params) #(appointment_params.merge(client_id: current_user.id))
+        # @appointment = Appointment.new(appointment_params.merge(client_id: current_user.id))
         if @appointment.save
             redirect_to @appointment
         else

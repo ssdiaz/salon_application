@@ -1,5 +1,6 @@
 class StylistsController < ApplicationController
-
+    before_action :require_logged_in, only: [:new, :edit]
+    
     def new
         @stylist = Stylist.new
     end

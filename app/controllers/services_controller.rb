@@ -1,4 +1,5 @@
 class ServicesController < ApplicationController
+    before_action :require_logged_in, only: [:new, :edit]
 
     def new
         @service = Service.new
