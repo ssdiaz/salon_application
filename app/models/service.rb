@@ -10,14 +10,15 @@ class Service < ActiveRecord::Base
   validates :price, presence: true, numericality: true
   
   before_save :titleize_name
-  validate :has_at_least_one_stylist?   #validate!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  validate :has_at_least_one_stylist?
 
   private 
-    def titleize_name
-      self.name = name.titleize  
-    end
 
-    def has_at_least_one_stylist?
-      errors.add(:base, 'Must have at least one Stylist') if self.stylists.empty?
-    end
+  def titleize_name
+    self.name = name.titleize  
+  end
+
+  def has_at_least_one_stylist?
+    errors.add(:base, 'Must have at least one Stylist') if self.stylists.empty?
+  end
 end

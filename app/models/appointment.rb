@@ -2,29 +2,28 @@ class Appointment < ActiveRecord::Base
 
     scope :filter_by_stylist, -> (stylist_id) { where stylist_id: stylist_id }
 
+    def self.by_stylist(stylist_id)
+        where(stylist: stylist_id)
+    end
+
+
     # belongs_to :client
     belongs_to :stylist
 
     has_many :appointment_services
     has_many :services, through: :appointment_services
 
-
     validates_presence_of :start_time, message: 'error, must choose a Date and Time' 
-
+    validates_presence_of :stylist
 
     validate :has_at_least_one_service?
+    before_validation :stylist_has_service?
+    after_validation :set_cost, :set_duration, :set_end_time
+
+
     def has_at_least_one_service?
       errors.add(:base, 'Must have at least one Service') if self.services.empty?
     end
-
-    validate :has_stylist?     # validates :stylist, presence: true 
-    def has_stylist?
-        errors.add(:base, 'Must choose a Stylist') if self.stylist.blank?
-    end
-
-
-
-    before_validation :stylist_has_service?#, only: [:create, :new]
 
     def stylist_has_service?
         if self.stylist
@@ -35,10 +34,7 @@ class Appointment < ActiveRecord::Base
                 end
             end    
         end
-    end
-
-
-    after_save :set_cost, :set_duration, :set_end_time
+    end 
 
     def set_cost
         self.cost = self.services.collect {|service| service.price}.sum

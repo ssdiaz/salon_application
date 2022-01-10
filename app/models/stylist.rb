@@ -8,33 +8,20 @@ class Stylist < ActiveRecord::Base
     has_many :stylist_services
     has_many :services, through: :stylist_services
 
-    before_save { email.downcase! }
-    before_save :titleize_name
-
-    validate :has_at_least_one_service? #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    # after_save :has_at_least_one_service?
-
-
     validates_presence_of :level, presence: true, numericality: { only_integer: true }
     validates_inclusion_of :level, :in => 0..5, message: 'must be selected from 1-5' 
-
-
-    validates :name, presence: true, length: { minimum: 2 }, length: { maximum: 50 }
-    validates :handle, presence: true, length: { minimum: 2 }, length: { maximum: 25 }
- 
-
+    validates :name, presence: true
+    validates :handle, presence: true
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
     validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: VALID_EMAIL_REGEX }
 
-    #For creating New Service when creating New Stylist: ... # note: not using the macro bc it will create a service every time ... => # accepts_nested_attributes_for :services
-    def services_attributes=(service_attributes)
-        service_attributes.values.each do |service_attribute|
-            service = Service.find_or_create_by(service_attribute)
-            self.services << service # self.post_services.build(service: service)
-        end
-    end
+    validate :has_at_least_one_service?
 
-private
+    before_save { email.downcase! }
+    before_save :titleize_name
+
+    private
+
     def titleize_name
         self.name = name.titleize  
     end

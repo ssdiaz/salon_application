@@ -20,10 +20,12 @@
 <br>
 
 <div>
- <%= form_tag({}, :method => 'get') do  %>  
+ <%= form_tag({}, method: 'get') do %>  
   <%= label_tag :stylist_id, 'Choose a Stylist to Filter:' %><br>  
   <%= select_tag :stylist_id, options_from_collection_for_select(@stylists, :id, :name, params[:stylist_id]), include_blank: true %> <%# , include_blank: "All"%>
   <%= submit_tag "Select" %>
   <%# <%= link_to "Clear Filter", request.path, class:"cancel-button" %> 
 <% end %>
 </div>
+
+

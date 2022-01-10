@@ -10,7 +10,6 @@ class StylistsController < ApplicationController
     end
 
     def show
-        # @stylist = Stylist.find_by(id: params[:id])
         @stylist = Stylist.find(params[:id])
     end
 
@@ -32,7 +31,7 @@ class StylistsController < ApplicationController
     def update
         @stylist = Stylist.find(params[:id])
         @stylist.update(stylist_params)
-        if @stylist.save
+        if @stylist.valid?
             redirect_to @stylist
         else
             render 'edit'
@@ -44,11 +43,10 @@ class StylistsController < ApplicationController
         redirect_to stylists_path
     end
 
-
     private
 
     def stylist_params
-        params.require(:stylist).permit(:name, :email, :handle, :level, service_ids:[], services_attributes: [:name, :minutes, :price], appointment_ids:[])
+        params.require(:stylist).permit(:name, :email, :handle, :level, service_ids:[], appointment_ids:[]) #, services_attributes: [:name, :minutes, :price]
     end
 
 end

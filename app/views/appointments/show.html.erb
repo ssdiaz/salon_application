@@ -2,37 +2,21 @@
 
 <%= render partial: 'errors/error', locals: {object: @appointment} %>
 
+<div>
+Stylist: <%= display_stylist_name(@appointment) %><br>
 
-Stylist: <%= display_stylist_name(@appointment) %>
-
-<br>
-<br>
-
-~ Start Time: <%= @appointment.start_time %> ~
-<br>
-TIME: <%= start_time(@appointment) %>
-
-<br> 
-<br>
-
-Service(s): 
+Service(s)
 <% @appointment.services.each do |service| %>
-  <li><%= service.name %>, 
+  | <%= service.name %>, 
   price: <%= service.price %>, 
-  mins: <%= service.minutes %></li>
-<% end %>
-<br>
+  mins: <%= service.minutes %>
+<% end %><br>
 
   Price: $<%= @appointment.cost %><br>
   Duration: <%= @appointment.duration %><br>
+  Time: <%= start_time(@appointment) %><br>
   Date: <%= date(@appointment) %><br>
-  End Time: <%= end_time(@appointment) %><br>
+</div>
 
 <p><%= link_to 'Edit Appointment', edit_appointment_path(@appointment) %></p>
-<p><%= link_to "View Stylist's Calendar", stylist_appointments_path(stylist_id(@appointment)) %></p><br> 
-
-
-
-
- <%# <%= apt.start_time.try(:strftime, "%l") %> 
-   
+<p><%= link_to "View Stylist's Calendar", stylist_appointments_path(stylist_id(@appointment)) %></p>
