@@ -1,5 +1,7 @@
-<h2>Edit Appointment #<%= @appointment.id %></h2>
+<h2>Edit Appointment ID#<%= @appointment.id %></h2>
 
-<%= render partial: "form", locals: {submit_tag: "Save"} %>
+<%= render partial: 'form', locals: {submit_tag: 'Save'} %>
 
-<p><%= button_to 'Delete', appointment_path(@appointment), method: :delete, data: {confirm: "Are you sure you want to delete 'appointment ##{@appointment.id}'?"} %></p>
+<div class="delete">
+    <p><%= button_to 'Delete', appointment_path(@appointment), method: :delete, data: {confirm: "Are you sure you want to delete 'Appointment ID##{@appointment.id}'?"} %></p>
+</div>

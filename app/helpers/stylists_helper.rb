@@ -17,18 +17,4 @@ module StylistsHelper
             stylist.id
         end
     end
-
-
-    # def display_stylist_name(service)
-    #     if params[:stylist_id]
-    #         stylist = Stylist.find(:stylist_id)
-    #         stylist.name
-    #     end
-    # end
-
-
-
-
-
-
 end

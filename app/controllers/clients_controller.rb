@@ -1,5 +1,5 @@
 class ClientsController < ApplicationController
-    before_action :require_logged_in, only: [:new, :edit]
+    before_action :require_logged_in
     
     def new
         @client = Client.new
@@ -16,8 +16,8 @@ class ClientsController < ApplicationController
     end
 
     def index
-        if params[:query]
-            @clients = Client.where("name LIKE ?", params[:query])
+        if params[:search]
+            @clients = Client.where("name LIKE ?", params[:search])
         else
             @clients = Client.all.order(:name)
         end
@@ -50,6 +50,6 @@ class ClientsController < ApplicationController
 
     private
     def client_params
-        params.require(:client).permit(:name, :email, :phone)
+        params.require(:client).permit(:name, :email, :phone, service_ids:[], appointment_ids:[], stylist_ids:[])
     end
 end

@@ -1,6 +1,6 @@
 <%= form_for @user, controller: 'users', action: 'create' do |f| %>
 
- <%= render partial: 'errors/error', locals: {object: @user} unless @user.errors.empty? %>
+  <%= render partial: 'errors/error', locals: {object: @user} unless @user.errors.empty? %>
 
   <%= f.label :name %>
   <%= f.text_field :name, class: 'form-control' %><br>
@@ -14,5 +14,5 @@
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation, class: 'form-control' %><br>
 
-  <%= f.submit submit_tag, class: "btn btn-primary" %>
+  <%= f.submit submit_tag %>
 <% end %>

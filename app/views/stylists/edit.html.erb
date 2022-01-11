@@ -1,5 +1,7 @@
-<h2>Edit Stylist:</h2>
+<h2>Edit Stylist ID#<%= @stylist.id %></h2>
 
-<%= render partial: "form", locals: {submit_tag: "Save"} %>
+<%= render partial: 'form', locals: {submit_tag: 'Save'} %>
 
-<%= button_to 'Delete', stylist_path(@stylist), method: :delete, data: {confirm: "Are you sure you want to delete '#{@stylist.name}'?"} %>
+<div class="delete">
+    <p><%= button_to 'Delete', stylist_path(@stylist), method: :delete, data: {confirm: "Are you sure you want to delete '#{@stylist.name}'?"} %></p>
+</div>

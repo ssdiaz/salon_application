@@ -1,11 +1,20 @@
-<h2>View All Stylists</h2>
+<h2>All Stylists</h2>
 
-<ul>
-<% @stylists.each do |stylist| %>
-    <li>
-        <%= link_to stylist.name, stylist_path(stylist) %>, Level: <%= stylist.level%>
-    </li>
-<% end %>
-</ul>
+<table class="index">
+  <thead><th>#</th><th>Stylist</th><th>Level</th><th>Handle</th></thead>
+  <tbody>
+    <% @stylists.each_with_index do |stylist, index| %>
+    <tr>
+      <td><%= index += 1 %></td>
+      <td><%= link_to stylist.name, stylist_path(stylist) %></td>
+      <td><%= stylist.level%></td>
+      <td><%= stylist.handle %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<%= link_to 'Create a New Stylist', new_stylist_path if logged_in? %>
+<br>
+<div class="action-link">
+  <p><%= link_to 'Create a New Stylist', new_stylist_path if logged_in? %></p>
+</div>

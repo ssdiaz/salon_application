@@ -1,6 +1,7 @@
-<h2>Edit Service #<%= @service.id %></h2>
+<h2>Edit Service ID#<%= @service.id %></h2>
 
-<%= render partial: 'form' %>
+<%= render partial: 'form', locals: {submit_tag: 'Save'} %>
 
-<br>
-<%= button_to 'Delete', service_path(@service), method: :delete, data: {confirm: "Are you sure you want to delete '#{@service.name}'?"} %>
+<div class="delete">
+    <p><%= button_to 'Delete', service_path(@service), method: :delete, data: {confirm: "Are you sure you want to delete '#{@service.name}'?"} %></p>
+</div>

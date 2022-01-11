@@ -19,7 +19,7 @@ class ServicesController < ApplicationController
         if params[:stylist_id]
             @services = Stylist.find(params[:stylist_id]).services
         else
-            @services = Service.all
+            @services = Service.all.order(:name)
         end
     end
 
@@ -54,5 +54,4 @@ class ServicesController < ApplicationController
     def service_params
         params.require(:service).permit(:name, :minutes, :price, stylist_ids:[])
     end
-
 end

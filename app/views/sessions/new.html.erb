@@ -1,22 +1,20 @@
-<h3>Login Here:</h3>
+<h2>Login</h2>
 
 <%= form_for(:session, url: login_path) do |f| %>
     <%= f.label :email %>
     <%= f.text_field :email, class: 'form-control' %>
-
+    <br>
     <%= f.label :password %>
     <%= f.password_field :password, class: 'form-control' %>
+    <br><br>
     <%= f.submit "Log in", class: "btn btn-primary" %>
 <% end %>
+<%# submitting this form will result in a params hash where:
+    <%# params[:session] = { password: "foobar", email: "user@example.com" } %>
+    <%# submitted email & pw: %>
+        <%# params[:session][:email] %>
+        <%# params[:session][:password %>
+
+<p><%= link_to('Log in with Google', '/auth/google_oauth2', method: :post) %></p>
 
 <p>New user? <%= link_to "Sign up now!", signup_path %></p>
-
-<%#  submitting this form will result in a params hash where params[:session][:email] and 
-<%# params[:session][:password] correspond to the email and password fields. %> 
-
-<%# params[:session] = { password: "foobar", email: "user@example.com" } %>
-<%# submitted email & pw: %>
-    <%# params[:session][:email] %>
-    <%# params[:session][:password %>
-
-<p><%= link_to('Log in with Google!', '/auth/google_oauth2', method: :post) %></p>

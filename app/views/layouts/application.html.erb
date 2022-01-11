@@ -6,13 +6,12 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-      <div class="header">
-          <h1>Salon Application</h1>
-          <%# Book an appointment today! %>
-      </div>
+    <div class="header">
+      <h1>Salon Application</h1>
+    </div>
 
-     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %> 
-     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %> 
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %> 
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %> 
 
     <div class="navbar">
       <%= link_to 'Home', '/' %>
@@ -28,34 +27,32 @@
           <%= link_to 'Manage Clients', clients_path %>
           <%= link_to 'View All Appointments', appointments_path %>
           <%= link_to 'Book Appointment', new_appointment_path %>
-
-
-          ---------------
-          LOGGED IN AS USER:
-          <%= current_user.name  %> | <%= current_user.email  %> 
-          ---------------
         <% else %>
           <%= link_to 'Sign up', signup_path %>
           <%= link_to "Log in", login_path %>
         <% end %>
       </div>    
-    </div>
+    </div>    
   </head>
 
   <body>
     <% flash.each do |type, message| %>
       <div class="alert alert-info">
-        <%# <%= message %> 
-        <%= content_tag(:div, message, class: "alert alert-#{type}") %>
+        <%= message %> <%# <%= content_tag(:div, message, class: "alert alert-#{type}") %>
       </div>
     <% end %>
 
     <div class="main">
-        <%= yield %>    <%# loads the view content %>
+      <%= yield %>
     </div>
 
     <div class="footer">
-      <small>&copy; 2022 <strong>Salon Application</strong></small>
+      <small>
+        &copy; 2022 <strong>Salon Application</strong>
+        <% if logged_in? %>
+          | LOGGED IN AS USER: <%= current_user.name %> / <%= current_user.email %>
+        <% end %>
+      </small>
     </div>
   </body>
 </html>

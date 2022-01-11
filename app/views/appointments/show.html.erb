@@ -20,5 +20,10 @@ Service(s)
 
 </div>
 
-<p><%= link_to 'Edit', edit_appointment_path(@appointment) %></p>
+<br>
+<div class="action-link">
+  <p><%= link_to 'Edit', edit_appointment_path(@appointment) %></p>
+</div>
+
+<br>
 <p><%= link_to "View Stylist's Calendar", stylist_appointments_path(stylist_id(@appointment)) %></p>

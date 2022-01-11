@@ -1,14 +1,9 @@
-class Client < ActiveRecord::Base
+class Client < ApplicationRecord
+    before_save :titleize_name
+    before_save { email.downcase! }
+
     has_many :appointments
     has_many :stylists, through: :appointments
 
     validates_presence_of :name, :email, :phone
-
-    before_save :titleize_name
-
-    private
-    
-    def titleize_name
-        self.name = name.titleize  
-    end
 end

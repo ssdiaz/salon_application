@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-    # Resource: https://3rd-edition.railstutorial.org/book/sign_up#cha-sign_up
+    before_action :require_logged_in, only: [:index, :show, :edit, :update, :destroy]
+
     def new
         @user = User.new
     end
@@ -7,7 +8,7 @@ class UsersController < ApplicationController
     def create
         @user = User.new(user_params)
         if @user.save
-            log_in @user #session[:user_id] = user.id
+            log_in(@user)
             flash[:success] = "Welcome to the Salon App!"
             redirect_to @user
         else
@@ -15,30 +16,34 @@ class UsersController < ApplicationController
         end
     end
 
-    def index #DEF need to limit #delete????????????????????
+    def index
         @users = User.all
     end
 
     def show
         @user = User.find(params[:id])
+        check_if_profile_matches_current_user(@user)
     end
 
     def edit
         @user = User.find(params[:id])
+        check_if_profile_matches_current_user(@user)
     end
 
     def update
         @user = User.find(params[:id])
         @user.update(user_params)
         if @user.valid?
+            flash[:success] = "User Profile Saved"
             redirect_to @user
         else
             render 'edit'
         end
     end
 
-    def destroy #delete????????????????????
+    def destroy
         User.find(params[:id]).destroy
+        flash[:success] = "User Deleted"
         redirect_to users_path
     end
 

@@ -1,3 +1,32 @@
 // Place all the styles related to the appointments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+/* table properties for the appointments table, clients */
+table {
+    text-align: center;
+    border-spacing: 0;
+    width: 50%;
+    border: 2px solid black;
+}
+
+/* table headings (title) */
+th {
+    text-align: left;
+    padding: 10px;
+    background-color: grey;
+    color: #333;
+}
+
+/* table data cell */
+td {
+    text-align: left;
+    padding: 8px;
+    /* width: 100px; */
+    /* max-width: 150px; */
+}
+
+/* table rows */
+tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}

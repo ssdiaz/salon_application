@@ -6,4 +6,7 @@ Minutes: <%= @service.minutes%><br>
 Price: $<%= @service.price%><br>
 </div> 
 
-<p><%= link_to 'Edit', edit_service_path(@service) if logged_in? %></p>
+<br>
+<div class="action-link">
+    <p><%= link_to 'Edit', edit_service_path(@service) if logged_in? %></p>
+</div>

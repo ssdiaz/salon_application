@@ -1,4 +1,4 @@
-class AppointmentService < ActiveRecord::Base
+class AppointmentService < ApplicationRecord
     belongs_to :appointment
     belongs_to :service
 end

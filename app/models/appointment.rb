@@ -1,18 +1,18 @@
-class Appointment < ActiveRecord::Base
+class Appointment < ApplicationRecord
     belongs_to :client
     belongs_to :stylist
 
     has_many :appointment_services
     has_many :services, through: :appointment_services
 
-    validates_presence_of :start_time, message: 'error, must choose a Date and Time' 
-    validates_presence_of :stylist
+    scope :filter_by_stylist, -> (stylist_id) { where stylist_id: stylist_id }
+
+    before_save :set_cost, :set_duration, :set_end_time
+    before_validation :stylist_has_service?
 
     validate :has_at_least_one_service?
-    before_validation :stylist_has_service?
-    before_save :set_cost, :set_duration, :set_end_time #after_validation 
-
-    scope :filter_by_stylist, -> (stylist_id) { where stylist_id: stylist_id }
+    validates_presence_of :start_time, message: 'error, must choose a Date and Time' 
+    validates_presence_of :stylist
 
     def self.by_stylist(stylist_id)
         where(stylist: stylist_id)

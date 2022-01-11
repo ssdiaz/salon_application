@@ -1,6 +1,6 @@
-class Stylist < ActiveRecord::Base
-  # belongs_to :user
-  # accepts_nested_attributes_for :user
+class Stylist < ApplicationRecord
+  before_save { email.downcase! }
+  before_save :titleize_name
 
   has_many :appointments
   has_many :clients, through: :appointments
@@ -15,14 +15,7 @@ class Stylist < ActiveRecord::Base
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: VALID_EMAIL_REGEX }
   validate :has_at_least_one_service?
 
-  before_save { email.downcase! }
-  before_save :titleize_name
-
   private
-  
-  def titleize_name
-      self.name = name.titleize  
-  end
 
   def has_at_least_one_service?
     errors.add(:base, 'Must have at least one Service') if self.services.empty?

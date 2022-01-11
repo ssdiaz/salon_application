@@ -5,15 +5,6 @@ class StylistsController < ApplicationController
         @stylist = Stylist.new
     end
 
-    def index
-        @stylists = Stylist.all
-        @appointments = @appointments.filter_by_stylist(params[:appointment_ids]) if params[:appointment_ids].present?
-    end
-
-    def show
-        @stylist = Stylist.find(params[:id])
-    end
-
     def create
         @stylist = Stylist.new(stylist_params)
         if @stylist.save
@@ -22,6 +13,15 @@ class StylistsController < ApplicationController
         else
             render 'new'
         end
+    end
+
+    def index
+        @stylists = Stylist.all.order(level: :desc, name: :asc)
+        @appointments = @appointments.filter_by_stylist(params[:appointment_ids]) if params[:appointment_ids].present?
+    end
+
+    def show
+        @stylist = Stylist.find(params[:id])
     end
 
     def edit
@@ -48,7 +48,6 @@ class StylistsController < ApplicationController
     private
 
     def stylist_params
-        params.require(:stylist).permit(:name, :email, :handle, :level, service_ids:[], appointment_ids:[]) 
+        params.require(:stylist).permit(:name, :email, :handle, :level, service_ids:[], appointment_ids:[], client_ids:[]) 
     end
-
 end

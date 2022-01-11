@@ -14,5 +14,5 @@
   <%= f.label :stylist_ids, 'Link Stylists' %> 
   <%= f.collection_check_boxes :stylist_ids, Stylist.all, :id, :name %><br><br>
 
-  <%= f.submit 'Save', class: 'btn btn-primary' %><br>
+  <%= f.submit submit_tag %><br>
 <% end %>

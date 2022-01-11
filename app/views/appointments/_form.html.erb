@@ -1,5 +1,5 @@
-<div>
 <%= form_for @appointment do |f| %>
+
   <%= render partial: 'errors/error', locals: {object: @appointment} %>
   
   <br> 
@@ -44,4 +44,3 @@
   <br>
   <%= f.submit submit_tag %>
 <% end %>
-</div>

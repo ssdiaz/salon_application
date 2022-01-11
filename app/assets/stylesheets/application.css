@@ -14,3 +14,224 @@
  *= require_self
  *= require simple_calendar
  */
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+
+@media screen and (max-width: 700px) {
+    .row {   
+        flex-direction: column;
+    }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+    .navbar a {
+        float: none;
+        width: 100%;
+    }
+}
+
+/* Main column - gives padding to the whole site - each page column */
+.main {   
+    -ms-flex: 70%; /* IE10 */
+    flex: 70%;
+    background-color: white;
+    padding: 20px;
+}
+  
+/* Style the body */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    color: #333;
+    padding-bottom: 50px;
+}
+
+/* Header */
+.header {
+    padding: 8px;
+    text-align: center;
+    background: #AA88D8;  /* background: #1abc9c; */
+    color: white;
+}
+  
+/* Increase the font size of the heading */
+.header h1 {
+    font-size: 40px;
+}
+
+/* Footer */
+.footer {
+    background: #C8BADC;
+    color: white;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    line-height: 40px;
+    padding: 5px;
+    text-align: center;
+}
+
+/* affects footer ? */
+* {
+    box-sizing: border-box;
+}
+
+/* Style the top navigation bar */
+.navbar,.navbar_logged_in {
+    overflow: hidden;
+    background-color: #333;
+}
+/* Style the navigation bar links */
+.navbar a {
+    float: left;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}  
+/* Style the navigation bar - LOGGED IN */
+.navbar_logged_in a {
+    float: right;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}  
+
+/* Change color on hover */
+.navbar a:hover, .navbar_logged_in a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* form input fields */
+input[type=text], input[type=password] {
+    width: 50%;
+    padding: 8px 15px;
+    margin: 5px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    /* box-sizing: border-box; */
+}
+
+/* buttons */
+input[type=submit] {
+    background-color: #F90F80; 
+    color: white;
+    padding: 8px 15px;
+    margin: 5px 0;
+    border: none;
+    cursor: pointer;
+    min-width: 75px;
+}
+input[type=submit]:hover  {
+opacity: 0.5;
+}
+
+/* Delete buttons */
+.delete input[type=submit] {
+    background-color: grey; 
+    color: white;
+    padding: 8px 15px;
+    margin: 5px 0;
+    border: none;
+    cursor: pointer;
+    min-width: 75px;
+    text-decoration: none;
+    font-size: 13px;
+}
+.delete input[type=submit] a:hover{
+    opacity: 0.5;
+}  
+
+/* tables in indexs - Stylists, Services, Stylist Appointment Total Table */
+table.index {
+    text-align: center;
+    border-spacing: 0;
+    width: 32%;
+    border: 2px solid #333;
+    border-collapse: collapse;
+}
+table.index th{
+    text-align: center;
+    padding: 8px;
+    background-color: grey;
+    color: #333;
+}
+table.index td{
+    text-align: center;
+    padding: 6px;
+    color: #333;
+}
+
+/* flash message format */
+.alert {
+    opacity: 0.5;
+    margin-top: 10px;
+    padding: 12px;
+    background-color:  #F90F80;
+    color: white;
+    font-size: 16px;
+    font-weight: bold; 
+    font-style: italic;
+}
+
+/* links */
+a:hover {
+    color: hotpink;
+    text-decoration: none;
+}
+
+/* for _form partials */
+.form-control {
+    /* min-width: 250px; */
+    max-width: 250px;
+    /* background-color: grey; */
+    display: inline-block;  
+}
+
+/* for errors when using _form/creating new objs */
+.error_explanation {
+    color: red;
+    background-color: #E5E7E9;
+    border: 1px solid black;
+    padding: 2px 6px;
+    width: 35%;
+}
+
+/* cancel buttons/links on clients and appointments */
+.cancel-button {
+    background-color: grey; 
+    color: white;
+    padding: 8px 15px;
+    margin: 5px 0;
+    border: none;
+    cursor: pointer;
+    min-width: 75px;
+    text-decoration: none;
+    font-size: 13px;
+}
+.cancel-button:hover {
+    opacity: 0.5;
+    color: white;
+}
+
+/* Action Links, like Create a New Obj, Book Appt */
+.action-link a {
+    background-color: #F90F80; 
+    color: white;
+    padding: 8px 15px;
+    margin: 5px 0;
+    border: none;
+    cursor: pointer;
+    min-width: 75px;
+    text-decoration: none;
+    font-size: 13px;
+}
+.action-link:hover {
+    opacity: 0.5;
+    color: white;
+}

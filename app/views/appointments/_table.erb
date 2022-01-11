@@ -6,9 +6,9 @@
       <td><%= index += 1 %></td>
       <td><%= link_to "Appointment ##{appointment.id}", appointment_path(appointment) %></td>
       <td><%= display_stylist_name(appointment) %></td>
-      <td> <%= display_client_name(appointment) %></td>
+      <td><%= display_client_name(appointment) %></td>
       <td>$<%= appointment.cost %></td>
-      <td><%= date(appointment) %> </td>
+      <td><%= date(appointment) %></td>
       <td><%= start_time(appointment) %></td>
     </tr>
     <% end %>
