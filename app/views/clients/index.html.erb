@@ -3,10 +3,11 @@
 <ol>
 <% @clients.each do |client| %>
     <li>
-    ID: <%= link_to client.id, edit_service_path(client) %><br>
+    <%= link_to "ID: #{client.id}", edit_client_path(client) %><br>
     Name: <%= client.name %><br>
     Email: <%= client.email %><br>
     Phone: $<%= client.phone %><br>
+    <%= link_to "Book Appointment for: #{client.name}", new_client_appointment_path(client) %><br>
     <br>
     </li>
 <% end %>

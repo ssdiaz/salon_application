@@ -13,5 +13,5 @@ Services:
     <li><%= link_to service.name, stylist_service_path(@stylist.id, service.id) %></li>
 <% end %>
 
-<p><%= link_to 'Edit Stylist', edit_stylist_path %></p>
-<p><%= link_to 'View Appointments', stylist_appointments_path(@stylist.id) %></p>
+<p><%= link_to 'Edit Stylist', edit_stylist_path if logged_in? %></p>
+<p><%= link_to 'View Appointments', stylist_appointments_path(@stylist.id) if logged_in? %></p>

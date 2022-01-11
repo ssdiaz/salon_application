@@ -1,12 +1,11 @@
-<%# <%= month_calendar(attribute: :start_date, end_attribute: :end_date) do |date| %> 
-<%= month_calendar(events: @appointments) do |date, appointments| %>
+<%= month_calendar(events: @appointments) do |date, appointments| %> <%# <%= month_calendar(attribute: :start_date, end_attribute: :end_date) do |date| %> 
   <%= date.day %> 
 
   <% 9.upto(20).each do |hour| %>
     <div>
       <b><%= Time.parse("#{hour}:00").strftime("%l %p") %></b>
 
-      <% appointments.each do |appointment|  %>
+      <% appointments.each do |appointment| %>
         <% if appointment.start_time.strftime("%H").to_i  == hour %> 
           <div>
             <%= link_to "Appointment #: #{appointment.id}", appointment_path(appointment) %><br>

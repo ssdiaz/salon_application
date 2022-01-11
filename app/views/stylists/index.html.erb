@@ -2,8 +2,10 @@
 
 <ul>
 <% @stylists.each do |stylist| %>
-    <li><%= link_to stylist.name, stylist_path(stylist) %></li>
+    <li>
+        <%= link_to stylist.name, stylist_path(stylist) %>, Level: <%= stylist.level%>
+    </li>
 <% end %>
 </ul>
 
-<%= link_to 'Create a Stylist', new_stylist_path %>
+<%= link_to 'Create a Stylist', new_stylist_path if logged_in? %>

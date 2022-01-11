@@ -2,16 +2,14 @@
 
 <ul>
 <% @services.each do |service| %>
-    <li>
-    ID: <%= link_to service.id, edit_service_path(service) %><br>
+    <% if logged_in? %>
+    <%= link_to "ID: #{service.id}", edit_service_path(service) %><br>
+    <% end %>
     Name: <%= service.name %><br>
     Duration: <%= service.minutes%><br>
     Price: $<%= service.price%><br>
     <br>
-    </li>
 <% end %>
 </ul>
 
-<p>
-<%= link_to 'Create a New Service', new_service_path %>
-</p>
+<%= link_to 'Create a New Service', new_service_path if logged_in? %>

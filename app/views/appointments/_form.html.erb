@@ -1,10 +1,16 @@
 <div>
 <%= form_for @appointment do |f| %>
   <%= render partial: 'errors/error', locals: {object: @appointment} %>
-
-  <%= f.label :client_id, 'Choose a Client' %><br>  
-  <%= f.collection_select :client_id, Client.all, :id, :name, include_blank: true %><br>
   
+  <br> 
+  <% if params[:client_id] %>
+    <%= f.hidden_field :client_id %>
+    <%= f.label :client_id, "Client: #{display_client_name(@appointment)}" %><br>
+  <% else %>
+    <%= f.label :client_id, 'Choose a Client' %><br>  
+    <%= f.collection_select :client_id, Client.all, :id, :name, include_blank: true %><br>
+  <% end %>
+
   <br>
   <%= f.label :service_ids, 'Choose Service(s)' %><br> 
   <% if params[:stylist_id] %>
@@ -35,7 +41,7 @@
   <%= f.label :start_time, 'Choose a Time' %><br>
   <%= f.datetime_local_field :start_time  %> <br>
 
-  <br><br>
+  <br>
   <%= f.submit submit_tag %>
 <% end %>
 </div>

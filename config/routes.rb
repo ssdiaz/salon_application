@@ -9,15 +9,22 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   get    'logout'  => 'sessions#destroy' #delete, and post do not work here ... # post '/logout' => 'sessions#destroy'
 
+  get '/auth/:google_oauth2/callback' => 'sessions#google'
+  # match '/auth/:google_oauth2/callback' => 'sessions#google', via: [:get,:post]
+
   resources :users
-  resources :clients
+  resources :services
+  resources :appointments
+
+  resources :clients do 
+    resources :appointments, only: [:show, :index, :new] 
+  end
+
   resources :stylists do 
     resources :services, only: [:show, :index] 
     resources :appointments, only: [:show, :index, :new] 
   end
-  resources :services
-  resources :appointments
-
+  
 end
 
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

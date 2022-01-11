@@ -10,12 +10,13 @@ class Appointment < ActiveRecord::Base
 
     validate :has_at_least_one_service?
     before_validation :stylist_has_service?
-    after_validation :set_cost, :set_duration, :set_end_time
+    before_save :set_cost, :set_duration, :set_end_time #after_validation 
 
     scope :filter_by_stylist, -> (stylist_id) { where stylist_id: stylist_id }
 
+    private
     def has_at_least_one_service?
-      errors.add(:base, 'Must have at least one Service') if self.services.empty?
+        errors.add(:base, 'Must have at least one Service') if self.services.empty?
     end
 
     def stylist_has_service?
@@ -30,8 +31,7 @@ class Appointment < ActiveRecord::Base
     end 
 
     def set_cost
-        self.cost = self.services.collect {|service| service.price}.sum 
-        # self.cost = self.services.pluck(:price).sum
+        self.cost = self.services.collect {|service| service.price}.sum # self.cost = self.services.pluck(:price).sum
     end
 
     def set_duration

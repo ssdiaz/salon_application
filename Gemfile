@@ -6,6 +6,14 @@ ruby '2.6.1'
 # Simple Calendar - renders a calendar Read more: https://www.ruby-toolbox.com/projects/simple_calendar
 gem "simple_calendar", "~> 2.4"
 
+#Read more: https://github.com/omniauth/omniauth
+gem 'omniauth'
+gem 'omniauth-google-oauth2' # gem 'omniauth-google'
+gem 'omniauth-rails_csrf_protection' # Due to recent changes to the omniauth gem we need to add omniauth-rails_csrf_protection
+gem 'dotenv-rails'
+
+gem 'pry'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.4'
 # Use sqlite3 as the database for Active Record

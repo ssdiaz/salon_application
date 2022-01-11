@@ -37,6 +37,8 @@ RESOURCES
 
 - days of week: https://stackoverflow.com/questions/17310991/display-list-of-days-in-a-week-in-rails-using-datedaynames
 - number range validation: https://stackoverflow.com/questions/6881900/how-to-check-if-a-number-is-included-in-a-range-in-one-statement
+- Google OAuth Login - https://medium.com/@amoschoo/google-oauth-for-ruby-on-rails-129ce7196f35
+
 
 
 

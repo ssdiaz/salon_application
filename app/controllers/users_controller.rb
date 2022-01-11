@@ -15,7 +15,7 @@ class UsersController < ApplicationController
         end
     end
 
-    def index #DEF need to limit
+    def index #DEF need to limit #delete????????????????????
         @users = User.all
     end
 
@@ -37,9 +37,14 @@ class UsersController < ApplicationController
         end
     end
 
+    def destroy #delete????????????????????
+        User.find(params[:id]).destroy
+        redirect_to users_path
+    end
+
     private
 
     def user_params
-        params.require(:user).permit(:name, :email, :password, :password_confirmation, :client)
+        params.require(:user).permit(:name, :email, :password, :password_confirmation, :uid) 
     end
 end
