@@ -1,12 +1,19 @@
 <h3>Manage Clients</h3>
 
+Search by Name
+<%= form_tag(clients_path, method: :get) do %>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag "Search", name: nil %><br>
+<% end %>
+<%= link_to "Clear Search", clients_path, class:"cancel-button" if params[:query] %> 
+
 <ol>
 <% @clients.each do |client| %>
     <li>
     <%= link_to "ID: #{client.id}", edit_client_path(client) %><br>
     Name: <%= client.name %><br>
     Email: <%= client.email %><br>
-    Phone: $<%= client.phone %><br>
+    Phone: <%= client.phone %><br>
     <%= link_to "Book Appointment for: #{client.name}", new_client_appointment_path(client) %><br>
     <br>
     </li>

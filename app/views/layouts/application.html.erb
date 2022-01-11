@@ -15,36 +15,30 @@
      <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %> 
 
     <div class="navbar">
-      <li><%= link_to 'Home', '/' %></li>
-      <li><%= link_to 'About Us', '/about' %></li>
-      <li><%= link_to 'Contact Us', '/contact' %></li>
-      <li><%= link_to 'Stylists', stylists_path %></li>
-      <li><%= link_to 'Services', services_path %></li>
+      <%= link_to 'Home', '/' %>
+      <%= link_to 'About Us', '/about' %>
+      <%= link_to 'Contact Us', '/contact' %>
+      <%= link_to 'Stylists', stylists_path %>
+      <%= link_to 'Services', services_path %>
+
+      <div class="navbar_logged_in">
+        <% if logged_in? %>
+          <%= link_to 'Log out', logout_path %>
+          <%= link_to 'Profile', current_user %>
+          <%= link_to 'Manage Clients', clients_path %>
+          <%= link_to 'View All Appointments', appointments_path %>
+          <%= link_to 'Book Appointment', new_appointment_path %>
 
 
-      <% if logged_in? %>
-        <li><%= link_to 'Clients', clients_path %></li>
-        <li><%= link_to 'Book Appointment', new_appointment_path %></li>
-        <li><%= link_to 'View All Appointments', appointments_path %></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            Account <b class="caret"></b>
-          </a>
-          <ul class="dropdown-menu">
-            <li><%= link_to "Profile", current_user %></li>
-            <%# <li><%= link_to "Settings", '#' %>
-            <li class="divider"></li>
-            <li><%= link_to "Log out", logout_path %></li>
-          </ul>
-        </li>
-        ---------------
-        LOGGED IN AS USER:
-        <%= current_user.name  %> | <%= current_user.email  %> 
-        ---------------
-      <% else %>
-        <li><%= link_to "Log in", login_path %></li>
-        <li><%= link_to 'Sign up', signup_path %></li>
-      <% end %>
+          ---------------
+          LOGGED IN AS USER:
+          <%= current_user.name  %> | <%= current_user.email  %> 
+          ---------------
+        <% else %>
+          <%= link_to 'Sign up', signup_path %>
+          <%= link_to "Log in", login_path %>
+        <% end %>
+      </div>    
     </div>
   </head>
 

@@ -16,12 +16,8 @@ Service(s)
   Duration: <%= @appointment.duration %><br>
   Time: <%= start_time(@appointment) %><br>
   Date: <%= date(@appointment) %><br>
-  Client: <%= @appointment.client_id %><br>
-  Client Name: <%= @appointment.client.name %><br>
-  Client obj: <%= @appointment.client %><br>
-  Current User: <%= current_user %><br>
-  <%= current_user.name  %>   <%= current_user.id  %>
-  Client obj: <%= @appointment.stylist.name %><br>
+  Client Name: <%= @appointment.client.name if @appointment.client %><br>
+
 </div>
 
 <p><%= link_to 'Edit Appointment', edit_appointment_path(@appointment) %></p>

@@ -19,6 +19,7 @@ class Stylist < ActiveRecord::Base
   before_save :titleize_name
 
   private
+  
   def titleize_name
       self.name = name.titleize  
   end

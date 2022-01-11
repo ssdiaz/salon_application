@@ -1,6 +1,5 @@
 class AppointmentsController < ApplicationController
     before_action :require_logged_in
-    # skip_before_action :require_login, only: [:index] #for anyone to see a list of appointments
 
     def new
         @appointment = Appointment.new(stylist_id: params[:stylist_id], client_id: params[:client_id])
@@ -8,9 +7,7 @@ class AppointmentsController < ApplicationController
     end
 
     def create
-        puts params 
-        puts "- -- - - -- -- "
-        @appointment = Appointment.new(appointment_params) # @appointment = Appointment.new(appointment_params.merge(client_id: current_user.id))
+        @appointment = Appointment.new(appointment_params)
         if @appointment.save
             redirect_to @appointment
         else
@@ -18,18 +15,21 @@ class AppointmentsController < ApplicationController
         end
     end
 
-
     def index
-        # start_date = params.fetch(:start_date, Date.today).to_date   # Scope your query to the dates being shown
-        if params[:stylist_id].present? 
-            @appointments = Appointment.filter_by_stylist(params[:stylist_id]) 
+        if params[:stylist_id].present? #if !params[:stylist_id].nil? #if params[:stylist_id].present? 
+            @appointments = Appointment.filter_by_stylist(params[:stylist_id]).order(:start_time)
             # @stylist = Appointment.by_stylist(params[:stylist_id]) #!!!!!!!!!!!!!!!!!!!!!!
             # @stylist = Stylist.find(params[:stylist_id]) 
             @stylist = Appointment.find_by(stylist_id: params[:stylist_id]).stylist
+            # @stylist = Appointment.by_stylist(params[:stylist])
+        # elsif params[:stylist_id].nil?
+        #     @appointments = Appointment.all
         else
             @appointments = Appointment.all
         end
         @stylists = Stylist.all
+        # @stylist = Appointment.by_stylist(params[:stylist])
+        
     end
 
 

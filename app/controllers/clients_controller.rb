@@ -8,16 +8,19 @@ class ClientsController < ApplicationController
     def create
         @client = Client.new(client_params)
         if @client.save
-            # log_in @client #session[:user_id] = client.id
-            # flash[:success] = "Welcome to the Salon App! MERP"
-            redirect_to @client #user_url(@client) or users#show -- profile page -- think I want this to be appointment in future
+            flash[:success] = "Client Created"
+            redirect_to clients_path
         else
             render 'new'
         end
     end
 
     def index
-        @clients = Client.all
+        if params[:query]
+            @clients = Client.where("name LIKE ?", params[:query])
+        else
+            @clients = Client.all.order(:name)
+        end
     end
 
     def show
@@ -32,7 +35,8 @@ class ClientsController < ApplicationController
         @client = Client.find(params[:id])
         @client.update(client_params)
         if @client.valid?
-            redirect_to @client
+            flash[:success] = "Client Saved"
+            redirect_to clients_path
         else
             render 'edit'
         end
@@ -40,6 +44,7 @@ class ClientsController < ApplicationController
 
     def destroy
         Client.find(params[:id]).destroy
+        flash[:success] = "Client Deleted"
         redirect_to clients_path
     end
 

@@ -14,7 +14,12 @@ class Appointment < ActiveRecord::Base
 
     scope :filter_by_stylist, -> (stylist_id) { where stylist_id: stylist_id }
 
+    def self.by_stylist(stylist_id)
+        where(stylist: stylist_id)
+    end
+
     private
+
     def has_at_least_one_service?
         errors.add(:base, 'Must have at least one Service') if self.services.empty?
     end
