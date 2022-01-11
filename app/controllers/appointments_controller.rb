@@ -9,6 +9,7 @@ class AppointmentsController < ApplicationController
     def create
         @appointment = Appointment.new(appointment_params)
         if @appointment.save
+            flash[:success] = "Appointment Created"
             redirect_to @appointment
         else
             render 'new'
@@ -16,22 +17,14 @@ class AppointmentsController < ApplicationController
     end
 
     def index
-        if params[:stylist_id].present? #if !params[:stylist_id].nil? #if params[:stylist_id].present? 
+        if params[:stylist_id].present?
             @appointments = Appointment.filter_by_stylist(params[:stylist_id]).order(:start_time)
-            # @stylist = Appointment.by_stylist(params[:stylist_id]) #!!!!!!!!!!!!!!!!!!!!!!
-            # @stylist = Stylist.find(params[:stylist_id]) 
             @stylist = Appointment.find_by(stylist_id: params[:stylist_id]).stylist
-            # @stylist = Appointment.by_stylist(params[:stylist])
-        # elsif params[:stylist_id].nil?
-        #     @appointments = Appointment.all
         else
-            @appointments = Appointment.all
+            @appointments = Appointment.all.order(:start_time)
         end
-        @stylists = Stylist.all
-        # @stylist = Appointment.by_stylist(params[:stylist])
-        
+        @stylists = Stylist.all.order(:name)
     end
-
 
     def show
         @appointment = Appointment.find(params[:id])
@@ -46,6 +39,7 @@ class AppointmentsController < ApplicationController
         @appointment = Appointment.find(params[:id])
         @appointment.update(appointment_params)
         if @appointment.valid?
+            flash[:success] = "Appointment Saved"
             redirect_to appointment_path(@appointment)
         else
             render 'edit'
@@ -54,13 +48,14 @@ class AppointmentsController < ApplicationController
 
     def destroy
         Appointment.find(params[:id]).destroy
+        flash[:success] = "Appointment Deleted"
         redirect_to appointments_path
     end
 
     private
 
     def appointment_params
-        params.require(:appointment).permit(:date, :price, :minutes, :start_time, :end_time, :stylist_id,  :client_id, service_ids:[])
+        params.require(:appointment).permit(:cost, :duration, :client_id, :stylist_id, :start_time, :end_time, service_ids:[])
     end
 
 end

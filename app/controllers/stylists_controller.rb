@@ -17,9 +17,8 @@ class StylistsController < ApplicationController
     def create
         @stylist = Stylist.new(stylist_params)
         if @stylist.save
-            # log_in @stylist #session[:user_id] = stylist.id
-            # flash[:success] = "Welcome to the Salon App! MERP"
-            redirect_to @stylist #user_url(@stylist) or users#show -- profile page -- think I want this to be appointment in future
+            flash[:success] = "Stylist Created"
+            redirect_to @stylist
         else
             render 'new'
         end
@@ -33,6 +32,7 @@ class StylistsController < ApplicationController
         @stylist = Stylist.find(params[:id])
         @stylist.update(stylist_params)
         if @stylist.valid?
+            flash[:success] = "Stylist Saved"
             redirect_to @stylist
         else
             render 'edit'
@@ -41,6 +41,7 @@ class StylistsController < ApplicationController
 
     def destroy
         Stylist.find(params[:id]).destroy
+        flash[:success] = "Stylist Deleted"
         redirect_to stylists_path
     end
 

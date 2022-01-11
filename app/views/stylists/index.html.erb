@@ -1,4 +1,4 @@
-<h3>View All Stylists</h3>
+<h2>View All Stylists</h2>
 
 <ul>
 <% @stylists.each do |stylist| %>
@@ -8,4 +8,4 @@
 <% end %>
 </ul>
 
-<%= link_to 'Create a Stylist', new_stylist_path if logged_in? %>
+<%= link_to 'Create a New Stylist', new_stylist_path if logged_in? %>

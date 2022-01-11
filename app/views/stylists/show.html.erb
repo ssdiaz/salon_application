@@ -1,4 +1,4 @@
-<h3>Stylist Profile</h3>
+<h2>Stylist Profile</h2>
 
 Name: <%= @stylist.name %> <br>
 
@@ -13,5 +13,6 @@ Services:
     <li><%= link_to service.name, stylist_service_path(@stylist.id, service.id) %></li>
 <% end %>
 
-<p><%= link_to 'Edit Stylist', edit_stylist_path if logged_in? %></p>
+<p><%= link_to 'Edit', edit_stylist_path if logged_in? %></p>
 <p><%= link_to 'View Appointments', stylist_appointments_path(@stylist.id) if logged_in? %></p>
+<p><%= link_to "Book Appointment with #{@stylist.name}", new_stylist_appointment_path(@stylist) %></p>

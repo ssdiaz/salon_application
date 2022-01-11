@@ -1,12 +1,7 @@
-<h3>Appointments Calendar</h3>
+<h2>Appointments Calendar</h2>
 
-<%= render partial: 'all_appointments_data' if !params[:stylist_id].present? %>
-
-<br>
-
-<%= render partial: 'stylist_appointments' if params[:stylist_id] %> 
-
-<div>
+<%# Filter by Stylist %>
+<div> 
     <%= form_tag({}, method: 'get') do %>  
         <%= label_tag :stylist_id, 'Choose a Stylist to Filter:' %><br>  
         <%= select_tag :stylist_id, options_from_collection_for_select(@stylists, :id, :name, params[:stylist_id]), include_blank: true %> <%# , include_blank: "All"%>
@@ -15,6 +10,41 @@
     <% end %>
 </div>
 
-<br>
+<%# View for All Apts %>
+<% if !params[:stylist_id].present? %>
+    <div>
+        <h4>Total Appointments for Stylist:</h4>
+        <table>
+        <thead><th>Stylist</th><th>Total Appointment</th></thead>
+        <tbody>
+            <% @stylists.each do |stylist| %>
+            <tr>
+            <td><%= stylist.name %></td>
+            <td><%= @appointments.filter_by_stylist(stylist.id).count %></td>
+            </tr>
+            <% end %>
+        </tbody>
+        </table>
+    </div>
+    
+    <br>
 
+    <div>
+    <h4>Appointment Total: <%= @appointments.count%></h4>
+        <%= render partial: 'appointment_table', locals: {appointments: @appointments} %>
+    </div>
+
+<%# View for Stylist Apts %>
+<% elsif params[:stylist_id].present? %>
+    <div>
+    <p><%= link_to "Book Appointment with #{@stylist.name}", new_stylist_appointment_path(@stylist) %></p>
+
+    <h4>Appointment Total for <%= @stylist.name %>: <%= @appointments.count %></h4>
+    <%= render partial: 'appointment_table', locals: {appointments: @appointments} %>
+
+    </div>
+<% end %> 
+
+<br>
+<%# Render Calendar View %>
 <%= render 'calendar' %>

@@ -12,9 +12,9 @@
 
   /* Header */
   .header {
-    padding: 10px;
+    padding: 8px;
     text-align: center;
-    background: pink;  /* background: #1abc9c; */
+    background: #AA88D8;  /* background: #1abc9c; */
     color: white;
   }
   
@@ -78,7 +78,7 @@
     
   /* Footer */
   .footer {
-    background: pink;
+    background: #C8BADC;
     color: white;
     position: fixed;
     left: 0;
@@ -156,7 +156,7 @@
   table {
     text-align: center;
     border-spacing: 0;
-    width: 100%;
+    width: 70%;
     border: 2px solid black;
   }
   /* table headings (titles) */
@@ -168,8 +168,8 @@
   }
   /* table data cell */
   td {
-      text-align: center;
-      padding: 10px;
+      text-align: left;
+      padding: 8px;
       width: 100px;
       max-width: 150px;
   }

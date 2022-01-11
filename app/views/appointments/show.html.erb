@@ -1,4 +1,4 @@
-<h3>Appointment #<%= @appointment.id %></h3>
+<h2>Appointment #<%= @appointment.id %></h2>
 
 <%= render partial: 'errors/error', locals: {object: @appointment} %>
 
@@ -20,5 +20,5 @@ Service(s)
 
 </div>
 
-<p><%= link_to 'Edit Appointment', edit_appointment_path(@appointment) %></p>
+<p><%= link_to 'Edit', edit_appointment_path(@appointment) %></p>
 <p><%= link_to "View Stylist's Calendar", stylist_appointments_path(stylist_id(@appointment)) %></p>

@@ -1,4 +1,4 @@
-<%= month_calendar(events: @appointments) do |date, appointments| %> <%# <%= month_calendar(attribute: :start_date, end_attribute: :end_date) do |date| %> 
+<%= month_calendar(events: @appointments) do |date, appointments| %>
   <%= date.day %> 
 
   <% 9.upto(20).each do |hour| %>
@@ -10,12 +10,11 @@
           <div>
             <%= link_to "Appointment #: #{appointment.id}", appointment_path(appointment) %><br>
             Stylist: <%= display_stylist_name(appointment) %><br>
-            Price: $<%= appointment.cost %><br>
-            TIME: <%= start_time(appointment) %><br>
-            DATE: <%= date(appointment) %><br>
+            Time: <%= start_time(appointment) %><br>
+            Date: <%= date(appointment) %><br>
             Service(s): 
             <% appointment.services.each do |service| %>
-              <li><%= service.name %></li>
+            | <%= service.name %>
             <% end %>
           </div>
         <% end %> 

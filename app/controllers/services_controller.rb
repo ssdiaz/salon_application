@@ -8,6 +8,7 @@ class ServicesController < ApplicationController
     def create
         @service = Service.new(service_params)
         if @service.save
+            flash[:success] = "Service Created"
             redirect_to @service 
         else
             render 'new'
@@ -35,6 +36,7 @@ class ServicesController < ApplicationController
         @service = Service.find(params[:id])
         @service.update(service_params)
         if @service.valid?
+            flash[:success] = "Service Saved"
             redirect_to service_path(@service)
         else
             render 'edit'
@@ -43,6 +45,7 @@ class ServicesController < ApplicationController
 
     def destroy
         Service.find(params[:id]).destroy
+        flash[:success] = "Service Deleted"
         redirect_to services_path
     end
 
