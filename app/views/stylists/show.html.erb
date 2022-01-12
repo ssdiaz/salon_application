@@ -13,15 +13,18 @@ Services:
     <li><%= link_to service.name, stylist_service_path(@stylist.id, service.id) %></li>
 <% end %>
 
-<br>
-<div class="action-link">
-    <p><%= link_to 'Edit', edit_stylist_path if logged_in? %></p>
-</div>
 
-<br>
-<div class="action-link">
-    <p><%= link_to "Book Appointment with #{@stylist.name}", new_stylist_appointment_path(@stylist) %></p>
-</div>
+<% if logged_in? %>
+    <br>
+    <div class="action-link">
+        <p><%= link_to 'Edit', edit_stylist_path %></p>
+    </div>
 
-<br>
-<p><%= link_to 'View Appointments', stylist_appointments_path(@stylist.id) if logged_in? %></p>
+    <br>
+    <div class="action-link">
+        <p><%= link_to "Book Appointment with #{@stylist.name}", new_stylist_appointment_path(@stylist) %></p>
+    </div>
+
+    <br>
+    <p><%= link_to 'View Appointments', stylist_appointments_path(@stylist.id) %></p>
+<% end %>
