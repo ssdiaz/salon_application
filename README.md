@@ -1,30 +1,5 @@
 # salon_application
-A mock design of a salon booking application
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
+An application design of a how a Hair Salon may book and maintain appointments for their clients. 
 
 RESOURCES
 - Build Calendar: https://www.youtube.com/watch?v=W62HuiE3e-o, https://github.com/excid3/simple_calendar/issues/170

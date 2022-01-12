@@ -7,10 +7,9 @@ Rails.application.routes.draw do
   get    'signup'  => 'users#new'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
-  get    'logout'  => 'sessions#destroy' #delete, and post do not work here ... # post '/logout' => 'sessions#destroy'
+  get    'logout'  => 'sessions#destroy'
 
   get '/auth/:google_oauth2/callback' => 'sessions#google'
-  # match '/auth/:google_oauth2/callback' => 'sessions#google', via: [:get,:post]
 
   resources :users
   resources :services
