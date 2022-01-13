@@ -4,20 +4,20 @@
 
 <div>
 
-Client: <%= @appointment.client.name if @appointment.client %><br>
-Stylist: <%= display_stylist_name(@appointment) %><br>
+Client: <b><%= @appointment.client.name if @appointment.client %></b><br>
+Stylist: <b><%= display_stylist_name(@appointment) %></b><br>
 
 Service(s)
 <% @appointment.services.each do |service| %>
-  | <%= service.name %>, 
-  price: <%= service.price %>, 
-  mins: <%= service.minutes %>
+  | <b><%= service.name %></b>, 
+  Price: <%= service.price %>, 
+  Mins: <%= service.minutes %>
 <% end %><br>
 
   Cost: $<%= @appointment.cost %><br>
   Duration: <%= @appointment.duration %> minutes<br> 
-  Time: <%= start_time(@appointment) %><br>
   Date: <%= date(@appointment) %><br>
+  Time: <%= start_time(@appointment) %><br>
 
 </div>
 

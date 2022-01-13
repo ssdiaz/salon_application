@@ -6,4 +6,6 @@ class ApplicationController < ActionController::Base
   
   include SessionsHelper
 
+  include ActionView::Helpers::NumberHelper
+
 end

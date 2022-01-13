@@ -1,26 +1,32 @@
 <%= month_calendar(events: @appointments) do |date, appointments| %>
-  <%= date.day %> 
+  <strong><%= date.day %></strong>
 
+  <small>
   <% 9.upto(20).each do |hour| %>
     <div>
-      <b><%= Time.parse("#{hour}:00").strftime("%l %p") %></b>
+      <%= Time.parse("#{hour}:00").strftime("%l %p") %>
 
+      <div>
       <% appointments.each do |appointment| %>
         <% if appointment.start_time.strftime("%H").to_i  == hour %> 
-          <div>
-            <%= link_to "Appointment #: #{appointment.id}", appointment_path(appointment) %><br>
-            Stylist: <%= display_stylist_name(appointment) %><br>
-            Time: <%= start_time(appointment) %><br>
-            Date: <%= date(appointment) %><br>
-            Service(s): 
-            <% appointment.services.each do |service| %>
-            | <%= service.name %>
-            <% end %>
-          </div>
+
+          <ul>  
+            <%# <small> %>
+            <b><%= link_to "AppointmentID##{appointment.id}", appointment_path(appointment) %></b>
+              <br>
+              Stylist: <b><%= display_stylist_name(appointment) %></b><br>
+              Time: <%= start_time(appointment) %><br>
+              Services 
+              <% appointment.services.each do |service| %>
+              | <%= service.name %>
+              <% end %>
+
+          </ul>
         <% end %> 
       <% end %>
+      </div>
 
     </div>
   <% end %>
-
+  </small>
 <% end %>

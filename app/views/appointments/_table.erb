@@ -1,10 +1,10 @@
 <table>
-  <thead><th>#</th><th>Appointment #ID</th><th>Stylist</th><th>Client</th><th>Cost</th><th>Date</th><th>Time</th></thead>
+  <thead><th></th><th>Appointment ID</th><th>Stylist</th><th>Client</th><th>Cost</th><th>Date</th><th>Time</th></thead>
   <tbody>
     <% appointments.each_with_index do |appointment, index| %>
     <tr>
       <td><%= index += 1 %></td>
-      <td><%= link_to "Appointment ##{appointment.id}", appointment_path(appointment) %></td>
+      <td><%= link_to "AppointmentID##{appointment.id}", appointment_path(appointment) %></td>
       <td><%= display_stylist_name(appointment) %></td>
       <td><%= display_client_name(appointment) %></td>
       <td>$<%= appointment.cost %></td>

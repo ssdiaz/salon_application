@@ -7,25 +7,25 @@
     <%= f.hidden_field :client_id %>
     <%= f.label :client_id, "Client: #{display_client_name(@appointment)}" %><br>
   <% else %>
-    <%= f.label :client_id, 'Choose a Client' %><br>  
-    <%= f.collection_select :client_id, Client.all, :id, :name, include_blank: true %><br>
+    <%= f.label :client_id, 'Choose a Client' %><br>
+    <%= f.collection_select :client_id, Client.all.order(:name), :id, :name, include_blank: true %><br>
   <% end %>
 
   <br>
   <%= f.label :service_ids, 'Choose Service(s)' %><br> 
   <% if params[:stylist_id] %>
     <%= f.hidden_field :stylist_id %>
-    <%= f.collection_check_boxes :service_ids, @stylist.services, :id, :name %><br> 
+    <%= f.collection_check_boxes :service_ids, @stylist.services.order(:name), :id, :name %><br> 
   <% else %>
-    <%= f.collection_check_boxes :service_ids, Service.all, :id, :name %><br>
-    <div>
-    <br>
-    <%= f.label :service_ids, "Stylist's Services" %><br> 
-    <% Service.all.each do |service| %>
-      <b><%= service.name %></b>
-      <% service.stylists.each{|stylist| %> | <%=stylist.name%><% } %> <br>
-    <% end %>
-    </div> 
+    <%= f.collection_check_boxes :service_ids, Service.all.order(:name), :id, :name %><br>
+    <ul>
+      <b><u><%= f.label :service_ids, "Stylists per Service: " %></b></u>
+      <br>
+      <% Service.all.each do |service| %>
+        <b><%= service.name %></b>
+        <% service.stylists.order(:name).each{|stylist| %> | <%=stylist.name%><% } %><br>
+      <% end %>
+    </ul>
   <% end %>
   
   <br> 
@@ -34,7 +34,7 @@
     <%= f.label :stylist_id, "Stylist: #{display_stylist_name(@appointment)}" %><br>
   <% else %>
   <%= f.label :stylist_id, 'Choose a Stylist' %><br> 
-    <%= f.collection_select :stylist_id, Stylist.all, :id, :name, include_blank: true %> <br> 
+    <%= f.collection_select :stylist_id, Stylist.all.order(:name), :id, :name, include_blank: true %> <br> 
   <% end %>
 
   <br>

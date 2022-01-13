@@ -1,18 +1,14 @@
 <h2>Stylist Profile</h2>
 
-Name: <%= @stylist.name %> <br>
-
-Handle: <%= @stylist.handle %> <br>
-
+Name: <strong><%= @stylist.name %> <br></strong>
 Email:  <%= @stylist.email %> <br>
-
-Level:  <%= @stylist.level %> <br>
+Social Media: <%= @stylist.handle %> <br>
+Expertise Level:  <%= @stylist.level %> <br>
 
 Services: 
 <% order_service_by_name(@stylist.services).each do |service| %>
     <li><%= link_to service.name, stylist_service_path(@stylist.id, service.id) %></li>
 <% end %>
-
 
 <% if logged_in? %>
     <br>

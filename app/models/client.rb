@@ -6,4 +6,5 @@ class Client < ApplicationRecord
     has_many :stylists, through: :appointments
 
     validates_presence_of :name, :email, :phone
+    validates :phone, length: { is: 10 }
 end

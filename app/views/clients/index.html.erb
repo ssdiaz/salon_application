@@ -15,7 +15,7 @@
     <tr>
       <td><%= client.name %></td>
       <td><%= client.email %></td>
-      <td><%= client.phone %></td>
+      <td><%= number_to_phone(client.phone, area_code: true) %></td>
       <td><%= link_to 'Edit', edit_client_path(client) %></td>
       <td><%= link_to "Book Appointment", new_client_appointment_path(client) %></td>
     </tr>
