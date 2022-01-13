@@ -7,8 +7,8 @@ class AppointmentsController < ApplicationController
     end
 
     def create
-        @appointment = Appointment.new(appointment_params)
-        if @appointment.save
+        @appointment = Appointment.create(appointment_params)
+        if @appointment.valid?
             flash[:success] = "Appointment Created"
             redirect_to @appointment
         else
@@ -20,6 +20,7 @@ class AppointmentsController < ApplicationController
         if params[:stylist_id].present?
             @appointments = Appointment.filter_by_stylist(params[:stylist_id]).order(:start_time)
             @stylist = Appointment.find_by(stylist_id: params[:stylist_id]).stylist
+            flash[:success] = "No Appointments currently for Stylist: #{Stylist.find(params[:stylist_id]).name}" if Appointment.find_by(stylist_id: params[:stylist_id]).nil?
         else
             @appointments = Appointment.all.order(:start_time)
         end

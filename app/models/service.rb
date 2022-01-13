@@ -1,7 +1,5 @@
 class Service < ApplicationRecord
-  before_save :titleize_name
-
-  has_many :appointment_services
+  has_many :appointment_services, :dependent => :destroy
   has_many :appointments, through: :appointment_services
 
   has_many :stylist_services
@@ -12,6 +10,8 @@ class Service < ApplicationRecord
   validates :price, presence: true, numericality: true
 
   validate :has_at_least_one_stylist?
+
+  before_save :titleize_name
 
   private 
 

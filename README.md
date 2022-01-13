@@ -15,6 +15,7 @@ RESOURCES
 - Google OAuth Login - https://medium.com/@amoschoo/google-oauth-for-ruby-on-rails-129ce7196f35
 - For the User's Controller: https://3rd-edition.railstutorial.org/book/sign_up#cha-sign_up
 - For SessionHelper: https://3rd-edition.railstutorial.org/book/log_in_log_out#sec-sessions_and_failed_login
+- For Validations on Many to Many relationships (avoid duplicates) - https://stackoverflow.com/questions/5129702/ruby-on-rails-activerecord-has-many-through-uniqueness-validation
 
 
 

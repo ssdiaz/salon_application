@@ -1,12 +1,12 @@
 class Stylist < ApplicationRecord
-  before_save { email.downcase! }
-  before_save :titleize_name
-
-  has_many :appointments
+  has_many :appointments, :dependent => :destroy
   has_many :clients, through: :appointments
 
-  has_many :stylist_services
+  has_many :stylist_services, :dependent => :destroy
   has_many :services, through: :stylist_services
+
+  before_save { email.downcase! }
+  before_save :titleize_name
 
   validates_presence_of :name, :handle
   validates_presence_of :level, presence: true, numericality: { only_integer: true }

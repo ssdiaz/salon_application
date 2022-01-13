@@ -1,11 +1,10 @@
 <h2>All Stylists</h2>
 
 <table class="index">
-  <thead><th>#</th><th>Stylist</th><th>Level</th><th>Handle</th></thead>
+  <thead><th>Stylist</th><th>Level</th><th>Handle</th></thead>
   <tbody>
-    <% @stylists.each_with_index do |stylist, index| %>
+    <% @stylists.each do |stylist| %>
     <tr>
-      <td><%= index += 1 %></td>
       <td><%= link_to stylist.name, stylist_path(stylist) %></td>
       <td><%= stylist.level%></td>
       <td><%= stylist.handle %></td>

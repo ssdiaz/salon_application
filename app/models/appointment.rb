@@ -2,21 +2,24 @@ class Appointment < ApplicationRecord
     belongs_to :client
     belongs_to :stylist
 
-    has_many :appointment_services
-    has_many :services, through: :appointment_services
+    has_many :appointment_services, :dependent => :destroy
+    has_many :services, through: :appointment_services, :dependent => :destroy
 
     scope :filter_by_stylist, -> (stylist_id) { where stylist_id: stylist_id }
-
-    before_save :set_cost, :set_duration, :set_end_time
-    before_validation :stylist_has_service?
 
     validate :has_at_least_one_service?
     validates_presence_of :start_time, message: 'error, must choose a Date and Time' 
     validates_presence_of :stylist
 
+    after_validation :stylist_has_service?   # after_validation# before_validation :stylist_has_service? # before_save doesnt work 
+
+    before_save :set_cost, :set_duration, :set_end_time
+
+
     def self.by_stylist(stylist_id)
         where(stylist: stylist_id)
     end
+
 
     private
 
@@ -25,15 +28,17 @@ class Appointment < ApplicationRecord
     end
 
     def stylist_has_service?
-        if self.stylist
+        # if self.stylist
             self.services.each do |apt_service| 
-                if !self.stylist.services.include?(apt_service) 
-                    errors.add(:base, 'Please choose a different Stylist that offers the services selected') 
-                    return false
-                end
+                # if !self.stylist.services.include?(apt_service) 
+                    errors.add(:base, 'Please choose a different Stylist that offers the services selected') if !self.stylist.services.include?(apt_service) 
+                    # return false
+                # end
             end    
-        end
+        # end
     end 
+
+
 
     def set_cost
         self.cost = self.services.collect {|service| service.price}.sum # self.cost = self.services.pluck(:price).sum

@@ -17,7 +17,7 @@ class ClientsController < ApplicationController
 
     def index
         if params[:search]
-            @clients = Client.where("name LIKE ?", params[:search])
+            @clients = Client.where("name LIKE ?", "%#{params[:search]}%")
         else
             @clients = Client.all.order(:name)
         end

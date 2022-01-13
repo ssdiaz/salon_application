@@ -19,9 +19,9 @@
   <% else %>
     <%= f.collection_check_boxes :service_ids, Service.all.order(:name), :id, :name %><br>
     <ul>
-      <b><u><%= f.label :service_ids, "Stylists per Service: " %></b></u>
+      <b><u>Stylists per Service:</b></u>
       <br>
-      <% Service.all.each do |service| %>
+      <% Service.all.order(:name).each do |service| %>
         <b><%= service.name %></b>
         <% service.stylists.order(:name).each{|stylist| %> | <%=stylist.name%><% } %><br>
       <% end %>
