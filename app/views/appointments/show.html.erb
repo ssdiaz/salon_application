@@ -3,6 +3,8 @@
 <%= render partial: 'errors/error', locals: {object: @appointment} %>
 
 <div>
+
+Client: <%= @appointment.client.name if @appointment.client %><br>
 Stylist: <%= display_stylist_name(@appointment) %><br>
 
 Service(s)
@@ -12,11 +14,10 @@ Service(s)
   mins: <%= service.minutes %>
 <% end %><br>
 
-  Price: $<%= @appointment.cost %><br>
-  Duration: <%= @appointment.duration %><br>
+  Cost: $<%= @appointment.cost %><br>
+  Duration: <%= @appointment.duration %> minutes<br> 
   Time: <%= start_time(@appointment) %><br>
   Date: <%= date(@appointment) %><br>
-  Client Name: <%= @appointment.client.name if @appointment.client %><br>
 
 </div>
 
