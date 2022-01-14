@@ -15,6 +15,7 @@ class Stylist < ApplicationRecord
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: VALID_EMAIL_REGEX }
   validate :has_at_least_one_service?
 
+
   private
 
   def has_at_least_one_service?
