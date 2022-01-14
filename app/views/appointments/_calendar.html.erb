@@ -11,16 +11,14 @@
         <% if appointment.start_time.strftime("%H").to_i  == hour %> 
 
           <ul>  
-            <%# <small> %>
             <b><%= link_to "AppointmentID##{appointment.id}", appointment_path(appointment) %></b>
-              <br>
-              Stylist: <b><%= display_stylist_name(appointment) %></b><br>
-              Time: <%= start_time(appointment) %><br>
-              Services 
-              <% appointment.services.each do |service| %>
-              | <%= service.name %>
-              <% end %>
-
+            <br>
+            Stylist: <b><%= display_stylist_name(appointment) %></b><br>
+            Time: <%= start_time(appointment) %><br>
+            Services 
+            <% appointment.services.each do |service| %>
+            | <%= service.name %>
+            <% end %>
           </ul>
         <% end %> 
       <% end %>
