@@ -11,7 +11,7 @@ class Appointment < ApplicationRecord
     validates_presence_of :start_time, message: 'error, must choose a Date and Time' 
     validates_presence_of :stylist
 
-    after_validation :stylist_has_service?   # after_validation# before_validation :stylist_has_service? # before_save doesnt work 
+    after_validation :stylist_has_service?
 
     before_save :set_cost, :set_duration, :set_end_time
 
@@ -28,17 +28,10 @@ class Appointment < ApplicationRecord
     end
 
     def stylist_has_service?
-        # if self.stylist
-            self.services.each do |apt_service| 
-                # if !self.stylist.services.include?(apt_service) 
-                    errors.add(:base, 'Please choose a different Stylist that offers the services selected') if !self.stylist.services.include?(apt_service) 
-                    # return false
-                # end
-            end    
-        # end
+        self.services.each do |apt_service| 
+            errors.add(:base, 'Please choose a different Stylist that offers the services selected') if !self.stylist.services.include?(apt_service) 
+        end    
     end 
-
-
 
     def set_cost
         self.cost = self.services.collect {|service| service.price}.sum # self.cost = self.services.pluck(:price).sum
