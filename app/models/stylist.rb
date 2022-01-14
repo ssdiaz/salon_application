@@ -1,9 +1,9 @@
 class Stylist < ApplicationRecord
   has_many :appointments, :dependent => :destroy
-  has_many :clients, through: :appointments
+  has_many :clients, through: :appointments, :dependent => :destroy
 
   has_many :stylist_services, :dependent => :destroy
-  has_many :services, through: :stylist_services
+  has_many :services, through: :stylist_services, :dependent => :destroy
 
   before_save { email.downcase! }
   before_save :titleize_name

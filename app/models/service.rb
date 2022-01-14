@@ -1,9 +1,9 @@
 class Service < ApplicationRecord
   has_many :appointment_services, :dependent => :destroy
-  has_many :appointments, through: :appointment_services
+  has_many :appointments, through: :appointment_services, :dependent => :destroy
 
-  has_many :stylist_services
-  has_many :stylists, through: :stylist_services
+  has_many :stylist_services, :dependent => :destroy
+  has_many :stylists, through: :stylist_services, :dependent => :destroy
 
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :minutes, presence: true, numericality: true
