@@ -20,7 +20,7 @@ class AppointmentsController < ApplicationController
         # start_date = params.fetch(:start_date, Date.today).to_date
         if params[:stylist_id].present?
             @appointments = Appointment.filter_by_stylist(params[:stylist_id]).order(:start_time)
-            @stylist = Appointment.find_by(stylist_id: params[:stylist_id]).stylist
+            @stylist = Stylist.find_by(id: params[:stylist_id])
             flash[:success] = "No Appointments currently for Stylist: #{Stylist.find(params[:stylist_id]).name}" if Appointment.find_by(stylist_id: params[:stylist_id]).nil?
         else
             @appointments = Appointment.all.order(:start_time)

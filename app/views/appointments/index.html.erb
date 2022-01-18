@@ -16,7 +16,7 @@
     <%= render partial: 'table', locals: {appointments: @appointments} %>
 
 <%# View for Stylist Apts %>
-<% elsif params[:stylist_id].present? %>
+<% else %>
     <h4>Appointment Total for <%= @stylist.name %>: <%= @appointments.count %></h4>
     <%= render partial: 'table', locals: {appointments: @appointments} %>
 
